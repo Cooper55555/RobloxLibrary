@@ -1,0 +1,566 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  user-select: none;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+  text-align: center;
+}
+
+body {
+  background: #f9fafb;
+  color: #222;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Container */
+#petContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  padding-bottom: 50px;
+  margin: 15px;
+}
+
+/* Search bar */
+#searchBar {
+  width: 40%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin: auto;
+  margin-bottom: 40px;
+  margin-top: 25px;
+}
+
+#searchBar:focus {
+  box-shadow: 0 0 8px rgba(21, 21, 22, 0.35);
+}
+
+/* Pet cards */
+.pet-card {
+  background: white;
+  width: 160px;
+  border-radius: 12px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+  padding: 15px 12px;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  user-select: none;
+}
+
+.pet-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+.pet-card img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 14px;
+  background-color: #e5e7eb;
+  transition: filter 0.3s ease;
+}
+
+.pet-card img.loading {
+  filter: blur(4px) grayscale(80%);
+}
+
+.pet-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+  color: #1a202c;
+  font-weight: 700;
+  text-transform: capitalize;
+  min-height: 2.5em;
+}
+
+.pet-card p {
+  margin-bottom: 5px;
+  color: #4a5568;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Detail container overrides */
+#petContainer > div {
+  background: white;
+  border-radius: 20px;
+  padding: 30px 35px;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  width: 100%;
+  max-width: 680px;
+  user-select: text;
+  text-align: center;
+  position: relative;
+  overflow-x: hidden; /* prevent horizontal scroll if content overflows */
+}
+
+/* Detail pet name */
+#petContainer h1 {
+  font-size: 2.3rem;
+  margin-bottom: 24px;
+  color: #007bff; /* blue text preserved */
+  font-weight: 900;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+/* Detail pet image */
+#petContainer img {
+  display: block;
+  margin: 0 auto 28px auto;
+  max-width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  user-select: none;
+}
+
+/* RAP current value */
+#petContainer p strong {
+  color: #007bff; /* blue text preserved */
+  font-weight: 700;
+}
+
+/* Back button */
+#petContainer button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 13px 28px;
+  font-size: 17px;
+  border-radius: 48px;
+  cursor: pointer;
+  display: block;
+  margin: 38px auto 0 auto;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+#petContainer button:hover {
+  background: #0056b3;
+}
+
+/* Canvas styling */
+canvas {
+  display: block;
+  margin: 28px auto 0 auto;
+  border-radius: 16px;
+  background: #f9fafb;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  max-width: 100%;
+  height: auto !important; /* maintain aspect ratio */
+}
+
+.dark-mode canvas {
+  display: block;
+  margin: 28px auto 0 auto;
+  border-radius: 16px;
+  background: #f9fafb27;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  max-width: 100%;
+  height: auto !important; /* maintain aspect ratio */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  user-select: none;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.navbar-links button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  padding: 0.5rem 1.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  font-family: inherit;
+  font-weight: 600;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar-links button:hover {
+  color: #ccc;
+  border-bottom-color: white;
+}
+
+.navbar-links button.active {
+  color: white;
+  border-bottom-color: white;
+  font-weight: bold;
+}
+
+.settings-container {
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.settings-icon {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #fff;
+  color: #000;
+  margin: 15px;
+  padding: 30px 30px 40px 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-height: 90%;
+  max-width: 420px;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.second-modal-content {
+  font-weight: bolder;
+}
+
+.dark-mode .modal-content {
+  background: #222;
+  color: #eee;
+  box-shadow: 0 8px 24px rgba(255,255,255,0.15);
+}
+
+.close-button {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 28px;
+  font-weight: bold;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.dark-mode-toggle-container {
+  margin: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  color: inherit;
+}
+
+.social-button-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+}
+
+.social-button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.social-button:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.social-button.discord {
+  background-color: #5865F2;
+}
+
+.social-button.android {
+  background-color: #555;
+}
+
+.switch-container {
+  margin: 5px;
+  line-height: 31px;
+  font-weight: bolder;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 70px;
+  height: 38px;
+  margin-right: 1rem;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 30px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  text-align: center;
+  line-height: 29px;
+  font-size: 20px;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+.switch input:checked + .slider {
+  background-color: #666;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(32px);
+}
+
+.copyright-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+h5 {
+  text-align: center;
+  margin: 15px;
+}
+
+.search-bar {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.search-bar input {
+  padding: 10px 16px;
+  font-size: 16px;
+  width: 70%;
+  max-width: 320px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-bar input:focus {
+  border-color: #333;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+  background-color: #222;
+  color: #eee;
+}
+
+.dark-mode body {
+  background-color: #222;
+  color: #eee;
+}
+
+.dark-mode #petContainer > div,
+.dark-mode .pet-card {
+  background-color: #333;
+  color: #eee;
+}
+
+.dark-mode h1,
+.dark-mode h3,
+.dark-mode p,
+.dark-mode .navbar-logo,
+.dark-mode .navbar-links button,
+.dark-mode .search-bar input {
+  color: #eee;
+}
+
+/* Preserve blue text color */
+.dark-mode #petContainer h1,
+.dark-mode #petContainer p strong {
+  color: #007bff;
+}
+
+/* Active navbar buttons: white, not blue */
+.dark-mode .navbar-links button.active {
+  color: white !important;
+  border-bottom-color: white !important;
+  font-weight: bold;
+}
+
+.dark-mode #searchBar {
+  background-color: #222;
+  border-color: #555;
+  color: #eee;
+}
+
+.dark-mode #searchBar:focus {
+  box-shadow: 0 0 8px rgba(99, 164, 255, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .pet-card {
+    width: 47%;
+  }
+
+  .navbar-logo {
+    margin-bottom: 8px;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .navbar-links {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .navbar-links button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  #searchBar {
+    width: 90%;
+  }
+
+  /* Dark mode adjustments inside responsive */
+  .dark-mode .navbar-links button {
+    color: #eee;
+  }
+
+  .dark-mode {
+    background-color: #222;
+    color: #eee;
+  }
+
+  .dark-mode #petContainer > div,
+  .dark-mode .pet-card {
+    background-color: #333;
+    color: #eee;
+  }
+
+  .dark-mode h1,
+  .dark-mode h3,
+  .dark-mode p,
+  .dark-mode .navbar-logo,
+  .dark-mode .navbar-links button,
+  .dark-mode .search-bar input {
+    color: #eee;
+  }
+
+  /* Keep original blue text color */
+  .dark-mode #petContainer h1,
+  .dark-mode #petContainer p strong {
+    color: #007bff;
+  }
+
+  /* Active navbar buttons white in dark mode on small screens too */
+  .dark-mode .navbar-links button.active {
+    color: white !important;
+    border-bottom-color: white !important;
+  }
+
+  .dark-mode #searchBar {
+    background-color: #222;
+    border-color: #555;
+    color: #eee;
+  }
+
+  .settings-container {
+  position: absolute;
+  top: 135px;
+  right: 20px;
+  z-index: 1000;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+  text-align: center;
+  margin-top: 40px;
+}
+}
