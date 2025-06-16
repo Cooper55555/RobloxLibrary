@@ -66,6 +66,58 @@ async function fetchData() {
   }
 }
 
+function showLoading() {
+  const loadingScreen = document.getElementById('loading-screen');
+  if (loadingScreen) loadingScreen.style.display = 'flex';
+}
+
+function hideLoading() {
+  const loadingScreen = document.getElementById('loading-screen');
+  if (loadingScreen) loadingScreen.style.display = 'none';
+}
+
+async function fetchData() {
+  showLoading(); // ⬅️ Show loading screen
+
+  try {
+    const [petsRes, rapRes] = await Promise.all([
+      fetch('https://ps99.biggamesapi.io/api/collection/Pets'),
+      fetch('https://ps99.biggamesapi.io/api/rap'),
+    ]);
+
+    const petsJson = await petsRes.json();
+    const rapJson = await rapRes.json();
+
+    rapData = rapJson.data;
+
+    allPets = petsJson.data.map((pet) => {
+      const name = pet.configName || pet.configData?.name || 'Unknown';
+      const normName = normalize(name);
+      const assetId = extractAssetId(pet);
+      const imageUrl = assetId
+        ? `https://ps99.biggamesapi.io/image/${assetId}`
+        : 'https://via.placeholder.com/100';
+
+      let rapId = null;
+      if (pet.configData?.id) {
+        rapId = normalize(pet.configData.id);
+      } else if (pet.id) {
+        rapId = normalize(pet.id.toString());
+      }
+
+      return { petId: pet.id, name, imageUrl, rawPet: pet, rapId };
+    });
+
+    showPetList();
+
+  } catch (err) {
+    console.error(err);
+    petContainer.innerHTML = `<p>Error loading data: ${err.message}</p>`;
+  } finally {
+    hideLoading(); // ⬅️ Hide loading screen after load (or error)
+  }
+}
+
 function toggleTCGSettingsModal() {
   const modal = document.getElementById("settings-modal-tcg");
   modal.classList.toggle("hidden");
@@ -112,7 +164,7 @@ const navButtons = document.querySelectorAll('.nav-btn');
 const sections = document.querySelectorAll('#petsim-section, #adoptme-section');
 
 navButtons.forEach((btn) => {
-  btn.addEventListener('click', () => {
+  btn.addEventListener('click', async () => {
     navButtons.forEach((b) => b.classList.remove('active'));
     btn.classList.add('active');
 
@@ -123,14 +175,20 @@ navButtons.forEach((btn) => {
 
     extraContainer.style.display = 'block';
 
-    if (target === 'petsim-section') {
-      searchBar.style.display = 'block';
-      settingsContainer.style.display = 'block';
-      showPetList(searchBar.value || '');
-      petsimTitle.style.display = 'flex';
-    } else {
-      searchBar.style.display = 'none';
-      settingsContainer.style.display = 'none';
+    showLoading(); // ⬅️ Show loading screen
+    try {
+      if (target === 'petsim-section') {
+        searchBar.style.display = 'block';
+        settingsContainer.style.display = 'block';
+        petsimTitle.style.display = 'flex';
+        await new Promise((resolve) => setTimeout(resolve, 100)); // small delay to trigger repaint
+        showPetList(searchBar.value || '');
+      } else {
+        searchBar.style.display = 'none';
+        settingsContainer.style.display = 'none';
+      }
+    } finally {
+      hideLoading(); // ⬅️ Hide after pets loaded
     }
   });
 });
@@ -310,20 +368,26 @@ function showPetDetails(pet) {
     ctx.fillText('Not Enough Data', canvas.width / 2, canvas.height / 2);
   }
 
-  const backBtn = document.createElement('button');
-  backBtn.textContent = '← Back to pets';
-  backBtn.style.marginTop = '30px';
-  backBtn.style.padding = '10px 15px';
-  backBtn.style.fontSize = '16px';
-  backBtn.style.cursor = 'pointer';
-  backBtn.addEventListener('click', () => {
+const backBtn = document.createElement('button');
+backBtn.textContent = '← Back to pets';
+backBtn.style.marginTop = '30px';
+backBtn.style.padding = '10px 15px';
+backBtn.style.fontSize = '16px';
+backBtn.style.cursor = 'pointer';
+backBtn.addEventListener('click', async () => {
+  showLoading(); // ⬅️ Show loading screen
+  try {
     petsimTitle.style.display = 'flex';
     settingsContainer.style.display = 'block';
+    await new Promise((resolve) => setTimeout(resolve, 50)); // small visual delay
     showPetList(searchBar.value);
     extraContainer.style.display = 'block';
     searchBar.style.display = 'block';
-  });
-  container.appendChild(backBtn);
+  } finally {
+    hideLoading(); // ⬅️ Hide loading screen after rendering
+  }
+});
+container.appendChild(backBtn);
 
   petContainer.appendChild(container);
 }
