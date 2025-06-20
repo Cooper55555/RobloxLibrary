@@ -65,7 +65,44 @@
       <div class="settings-container">
     <i class="fas fa-cog settings-icon" onclick="toggleTCGSettingsModal()"></i>
   </div>
-    <h1>COMING SOON...</h1>
+<div class="trade-calculator">
+  <div class="trade-header">
+    <div class="offer-value offer-value--yours" id="your-score">0</div>
+    <div class="trade-outcome">
+      <span class="outcome-label" id="win">WIN</span>
+      <span class="outcome-label active" id="fair">FAIR</span>
+      <span class="outcome-label" id="lose">LOSE</span>
+    </div>
+    <div class="offer-value offer-value--theirs" id="their-score">0</div>
+  </div>
+
+  <div class="trade-bars">
+    <div class="value-bar value-bar--yours" id="your-bar"></div>
+    <div class="value-bar value-bar--theirs" id="their-bar"></div>
+  </div>
+
+  <div class="trade-grids">
+    <div class="trade-grid trade-grid--yours" id="your-grid"></div>
+    <div class="trade-grid trade-grid--theirs" id="their-grid"></div>
+  </div>
+</div>
+
+<div class="modal-overlay trade-modal-overlay" id="trade-pet-modal">
+  <div class="modal trade-modal">
+    <button class="modal-close trade-modal-close" aria-label="Close modal">&times;</button>
+    <input type="text" id="trade-pet-search" placeholder="Search pet..." class="trade-pet-search-input" />
+    <ul id="trade-pet-list" class="trade-pet-list"></ul>
+
+    <div class="traits trade-traits">
+      <label><input type="checkbox" id="trade-flyable" /> Flyable (F)</label>
+      <label><input type="checkbox" id="trade-rideable" /> Rideable (R)</label>
+      <label><input type="checkbox" id="trade-neon" /> Neon (N)</label>
+      <label><input type="checkbox" id="trade-mega" /> Mega (M)</label>
+    </div>
+
+    <button id="trade-confirm-selection">Add Pet</button>
+    </div>
+  </div>
   </div>
 
   <div id="loading-screen">

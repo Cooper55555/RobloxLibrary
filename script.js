@@ -1,3 +1,231 @@
+const petModal = document.getElementById('trade-pet-modal');
+const petSearch = document.getElementById('trade-pet-search');
+const petList = document.getElementById('trade-pet-list');
+const confirmButton = document.getElementById('trade-confirm-selection');
+
+const flyable = document.getElementById('trade-flyable');
+const rideable = document.getElementById('trade-rideable');
+const neon = document.getElementById('trade-neon');
+const mega = document.getElementById('trade-mega');
+
+const yourGrid = document.getElementById('your-grid');
+const theirGrid = document.getElementById('their-grid');
+const yourScoreEl = document.getElementById('your-score');
+const theirScoreEl = document.getElementById('their-score');
+const yourBar = document.getElementById('your-bar');
+const theirBar = document.getElementById('their-bar');
+
+const closeModalBtn = petModal.querySelector('.trade-modal-close');
+
+let petsData = [];
+let selectedCell = null;
+let selectedPet = null;
+
+const fallbackPets = [
+  { name: 'Dog', value: 2, traits: { F: 16, R: 13, N: 20, M: 70 } },
+  { name: 'Cat', value: 2, traits: { F: 16, R: 13, N: 20, M: 70 } },
+  { name: 'Dragon', value: 59, traits: { F: 18, R: 15, N: 261, M: 1281 } },
+  { name: 'Unicorn', value: 180, traits: { F: 50, R: 50, N: 580, M: 2560 } },
+];
+
+function loadFallbackPets() {
+  petsData = fallbackPets.map(pet => ({
+    name: pet.name.toLowerCase(),
+    displayName: pet.name,
+    image: `https://adoptmevalues.gg/_next/image?url=%2Fitems%2F${encodeURIComponent(pet.name)}.webp&w=96&q=75`,
+    value: pet.value
+  }));
+  petsData.sort((a, b) => a.displayName.localeCompare(b.displayName));
+  renderPetList('');
+}
+
+function renderPetList(filter) {
+  petList.innerHTML = '';
+  const filtered = petsData.filter(p => p.name.includes(filter.toLowerCase()));
+
+  filtered.forEach(pet => {
+    const li = document.createElement('li');
+    li.classList.remove('selected');
+
+    const img = document.createElement('img');
+    img.src = pet.image;
+    img.alt = pet.displayName;
+    img.onerror = () => img.src = 'https://via.placeholder.com/50?text=No+Img';
+
+    li.appendChild(img);
+    li.appendChild(document.createTextNode(pet.displayName));
+
+    li.onclick = () => {
+      petList.querySelectorAll('li').forEach(el => el.classList.remove('selected'));
+      li.classList.add('selected');
+      selectedPet = pet;
+    };
+
+    petList.appendChild(li);
+  });
+
+  if (filtered.length === 0) {
+    const noRes = document.createElement('li');
+    noRes.textContent = 'No pets found.';
+    noRes.style.color = '#888';
+    petList.appendChild(noRes);
+  }
+}
+
+function openModal(cell) {
+  selectedCell = cell;
+  selectedPet = null;
+  flyable.checked = rideable.checked = neon.checked = mega.checked = false;
+  petSearch.value = '';
+  renderPetList('');
+  petModal.style.display = 'flex';
+}
+
+function openModal(cell) {
+  selectedCell = cell;
+  selectedPet = null;
+  flyable.checked = rideable.checked = neon.checked = mega.checked = false;
+  petSearch.value = '';
+  renderPetList('');
+  petModal.classList.add('show');  // show modal
+}
+
+// Close modal function (called on X click)
+function closeModal() {
+  petModal.classList.remove('show');
+}
+
+petSearch.addEventListener('input', () => renderPetList(petSearch.value));
+
+// Enforce trait exclusivity
+neon.addEventListener('change', () => {
+  if (neon.checked) mega.checked = false;
+});
+mega.addEventListener('change', () => {
+  if (mega.checked) neon.checked = false;
+});
+
+confirmButton.onclick = () => {
+  if (!selectedPet) return alert('Please select a pet.');
+
+  const traits = [];
+  const traitValues = fallbackPets.find(p => p.name.toLowerCase() === selectedPet.name).traits;
+
+  if (flyable.checked) traits.push('F');
+  if (rideable.checked) traits.push('R');
+  if (neon.checked) traits.push('N');
+  if (mega.checked) traits.push('M');
+  const traitStr = traits.join('');
+
+  selectedCell.innerHTML = '';
+
+  const container = document.createElement('div');
+  Object.assign(container.style, { position: 'relative', width: '100%', height: '100%' });
+  container.dataset.value = selectedPet.value; // base value
+  container.dataset.traits = traitStr;
+  container.dataset.traitValues = JSON.stringify(traitValues); // important for flat adds
+
+  const img = document.createElement('img');
+  img.src = selectedPet.image;
+  img.alt = selectedPet.displayName;
+  Object.assign(img.style, { width: '100%', height: '100%', objectFit: 'contain' });
+  img.onerror = () => img.src = 'https://via.placeholder.com/80?text=No+Img';
+  container.appendChild(img);
+
+  if (traitStr) {
+    const overlay = document.createElement('div');
+    overlay.textContent = traitStr;
+    Object.assign(overlay.style, {
+      position: 'absolute',
+      bottom: '2px',
+      right: '4px',
+      background: 'rgba(0,0,0,0.6)',
+      color: 'white',
+      fontWeight: 'bold',
+      fontSize: '14px',
+      padding: '0 4px',
+      borderRadius: '4px',
+      userSelect: 'none'
+    });
+    container.appendChild(overlay);
+  }
+
+  selectedCell.appendChild(container);
+  selectedCell.style.color = '';
+  closeModal();
+  updateScores();
+};
+
+function parseBaseValue(cell) {
+  const container = cell.querySelector('div');
+  if (!container) return 0;
+
+  const baseValue = Number(container.dataset.value) || 0;
+  const traitStr = container.dataset.traits || '';
+  const traitValues = JSON.parse(container.dataset.traitValues || '{}');
+
+  let total = baseValue;
+  for (const trait of traitStr) {
+    total += traitValues[trait] || 0;
+  }
+
+  return total;
+}
+
+function updateScores() {
+  const yourTotal = Array.from(yourGrid.children).reduce((sum, c) => sum + parseBaseValue(c), 0);
+  const theirTotal = Array.from(theirGrid.children).reduce((sum, c) => sum + parseBaseValue(c), 0);
+  yourScoreEl.textContent = yourTotal;
+  theirScoreEl.textContent = theirTotal;
+
+  const total = Math.max(yourTotal + theirTotal, 1);
+  yourBar.style.width = `${(yourTotal / total) * 100}%`;
+  theirBar.style.width = `${(theirTotal / total) * 100}%`;
+
+  document.querySelectorAll('.outcome-label').forEach(el => el.classList.remove('active'));
+  const result = yourTotal > theirTotal ? 'win' : yourTotal === theirTotal ? 'fair' : 'lose';
+  document.getElementById(result).classList.add('active');
+}
+
+function initGrid(grid) {
+  for (let i = 0; i < 9; i++) {
+    const cell = document.createElement('div');
+    Object.assign(cell.style, {
+      cursor: 'pointer',
+      fontSize: '28px',
+      color: '#888',
+      userSelect: 'none',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    });
+    cell.textContent = '+';
+
+    // Clicking empty cell opens modal
+    // Clicking pet removes it and resets to '+'
+    cell.onclick = () => {
+      if (cell.textContent === '+') {
+        openModal(cell);
+      } else {
+        cell.innerHTML = '+';
+        cell.style.color = '#888';
+        updateScores();
+      }
+    };
+
+    grid.appendChild(cell);
+  }
+}
+
+// Launch app
+loadFallbackPets();
+initGrid(yourGrid);
+initGrid(theirGrid);
+updateScores();
+
+const closeBtn = document.querySelector('.modal-close');
+closeBtn.onclick = () => closeModal();
+
 const petContainer = document.getElementById('petContainer');
 const searchBar = document.getElementById('searchBar');
 const extraContainer = document.querySelector('.extra-container');
