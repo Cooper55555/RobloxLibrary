@@ -21,19 +21,28 @@ let petsData = [];
 let selectedCell = null;
 let selectedPet = null;
 
+const createPet = (name, baseValue, traitCombos) => ({
+  name,
+  displayName: name,
+  image: `https://adoptmevalues.gg/_next/image?url=%2Fitems%2F${encodeURIComponent(name)}.webp&w=96&q=75`,
+  baseValue,
+  traitCombos
+});
+
 const fallbackPets = [
-  { name: 'Dog', value: 2, traits: { F: 16, R: 13, N: 20, M: 70 } },
-  { name: 'Cat', value: 2, traits: { F: 16, R: 13, N: 20, M: 70 } },
-  { name: 'Dragon', value: 59, traits: { F: 18, R: 15, N: 261, M: 1281 } },
-  { name: 'Unicorn', value: 180, traits: { F: 50, R: 50, N: 580, M: 2560 } },
+  createPet('Dog', 2, { 'F': 10, 'R': 10, 'FR': 20, 'N': 30, 'NR': 50, 'NF': 50, 'FRN': 60, 'M': 100 }),
+  createPet('Cat', 2, { 'F': 10, 'R': 10, 'FR': 20, 'N': 30, 'NR': 50, 'NF': 50, 'FRN': 60, 'M': 100 }),
+  createPet('Dragon', 59, { 'F': 15, 'R': 15, 'FR': 25, 'N': 100, 'NR': 150, 'NF': 150, 'FRN': 180, 'M': 300 }),
+  createPet('Unicorn', 180, { 'F': 25, 'R': 25, 'FR': 40, 'N': 200, 'NR': 300, 'NF': 300, 'FRN': 350, 'M': 600 }),
 ];
 
 function loadFallbackPets() {
   petsData = fallbackPets.map(pet => ({
     name: pet.name.toLowerCase(),
     displayName: pet.name,
-    image: `https://adoptmevalues.gg/_next/image?url=%2Fitems%2F${encodeURIComponent(pet.name)}.webp&w=96&q=75`,
-    value: pet.value
+    image: pet.image,
+    baseValue: pet.baseValue,
+    traitCombos: pet.traitCombos
   }));
   petsData.sort((a, b) => a.displayName.localeCompare(b.displayName));
   renderPetList('');
@@ -78,19 +87,9 @@ function openModal(cell) {
   flyable.checked = rideable.checked = neon.checked = mega.checked = false;
   petSearch.value = '';
   renderPetList('');
-  petModal.style.display = 'flex';
+  petModal.classList.add('show');
 }
 
-function openModal(cell) {
-  selectedCell = cell;
-  selectedPet = null;
-  flyable.checked = rideable.checked = neon.checked = mega.checked = false;
-  petSearch.value = '';
-  renderPetList('');
-  petModal.classList.add('show');  // show modal
-}
-
-// Close modal function (called on X click)
 function closeModal() {
   petModal.classList.remove('show');
 }
@@ -109,21 +108,22 @@ confirmButton.onclick = () => {
   if (!selectedPet) return alert('Please select a pet.');
 
   const traits = [];
-  const traitValues = fallbackPets.find(p => p.name.toLowerCase() === selectedPet.name).traits;
-
   if (flyable.checked) traits.push('F');
   if (rideable.checked) traits.push('R');
   if (neon.checked) traits.push('N');
   if (mega.checked) traits.push('M');
-  const traitStr = traits.join('');
+
+  // Sort trait key alphabetically to ensure consistency (e.g., 'FRN', not 'NFR')
+  const traitKey = traits.sort().join('');
+  const comboValue = selectedPet.traitCombos[traitKey] ?? 0;
 
   selectedCell.innerHTML = '';
 
   const container = document.createElement('div');
   Object.assign(container.style, { position: 'relative', width: '100%', height: '100%' });
-  container.dataset.value = selectedPet.value; // base value
-  container.dataset.traits = traitStr;
-  container.dataset.traitValues = JSON.stringify(traitValues); // important for flat adds
+  container.dataset.baseValue = selectedPet.baseValue; // <-- set baseValue here
+  container.dataset.traitValue = comboValue;
+  container.dataset.traits = traitKey;
 
   const img = document.createElement('img');
   img.src = selectedPet.image;
@@ -132,9 +132,9 @@ confirmButton.onclick = () => {
   img.onerror = () => img.src = 'https://via.placeholder.com/80?text=No+Img';
   container.appendChild(img);
 
-  if (traitStr) {
+  if (traitKey) {
     const overlay = document.createElement('div');
-    overlay.textContent = traitStr;
+    overlay.textContent = traitKey;
     Object.assign(overlay.style, {
       position: 'absolute',
       bottom: '2px',
@@ -156,25 +156,19 @@ confirmButton.onclick = () => {
   updateScores();
 };
 
-function parseBaseValue(cell) {
+function parseTotalValue(cell) {
   const container = cell.querySelector('div');
   if (!container) return 0;
 
-  const baseValue = Number(container.dataset.value) || 0;
-  const traitStr = container.dataset.traits || '';
-  const traitValues = JSON.parse(container.dataset.traitValues || '{}');
+  const baseValue = Number(container.dataset.baseValue) || 0;
+  const traitValue = Number(container.dataset.traitValue) || 0;
 
-  let total = baseValue;
-  for (const trait of traitStr) {
-    total += traitValues[trait] || 0;
-  }
-
-  return total;
+  return baseValue + traitValue;
 }
 
 function updateScores() {
-  const yourTotal = Array.from(yourGrid.children).reduce((sum, c) => sum + parseBaseValue(c), 0);
-  const theirTotal = Array.from(theirGrid.children).reduce((sum, c) => sum + parseBaseValue(c), 0);
+  const yourTotal = Array.from(yourGrid.children).reduce((sum, c) => sum + parseTotalValue(c), 0);
+  const theirTotal = Array.from(theirGrid.children).reduce((sum, c) => sum + parseTotalValue(c), 0);
   yourScoreEl.textContent = yourTotal;
   theirScoreEl.textContent = theirTotal;
 
@@ -201,8 +195,6 @@ function initGrid(grid) {
     });
     cell.textContent = '+';
 
-    // Clicking empty cell opens modal
-    // Clicking pet removes it and resets to '+'
     cell.onclick = () => {
       if (cell.textContent === '+') {
         openModal(cell);
@@ -217,11 +209,13 @@ function initGrid(grid) {
   }
 }
 
-// Launch app
+// Launch
 loadFallbackPets();
 initGrid(yourGrid);
 initGrid(theirGrid);
 updateScores();
+
+closeModalBtn.onclick = () => closeModal();
 
 const closeBtn = document.querySelector('.modal-close');
 closeBtn.onclick = () => closeModal();
@@ -305,7 +299,6 @@ function hideLoading() {
 }
 
 async function fetchData() {
-  showLoading(); // ⬅️ Show loading screen
 
   try {
     const [petsRes, rapRes] = await Promise.all([
@@ -342,7 +335,7 @@ async function fetchData() {
     console.error(err);
     petContainer.innerHTML = `<p>Error loading data: ${err.message}</p>`;
   } finally {
-    hideLoading(); // ⬅️ Hide loading screen after load (or error)
+    hideLoading(); // keep this to ensure the loading screen is hidden after data loads
   }
 }
 
