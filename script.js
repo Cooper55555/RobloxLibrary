@@ -143,7 +143,7 @@ confirmButton.onclick = () => {
       color: 'white',
       fontWeight: 'bold',
       fontSize: '14px',
-      padding: '0 4px',
+      padding: '4px 4px',
       borderRadius: '4px',
       userSelect: 'none'
     });

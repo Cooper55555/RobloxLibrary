@@ -12,13 +12,27 @@
   </head>
 <body>
   <div class="extra-container">
-    <nav id="main-navbar" class="navbar">
-      <a href="https://cooper55555.github.io/DataLibrary/" class="navbar-logo">DataLibrary</a>
-      <div class="navbar-links">
-        <button class="nav-btn active" data-section="adoptme-section">ADOPTME</button>
-        <button class="nav-btn" data-section="petsim-section">PETSIM99</button>
-      </div>
-    </nav>
+<nav id="main-navbar" class="navbar">
+  <a href="https://cooper55555.github.io/DataLibrary/" class="navbar-logo" style="text-decoration: none;">
+    <div class="logo-container">
+      <i class="fas fa-database logo-icon"></i>
+      <span class="logo-text">DataLibrary</span>
+    </div>
+  </a>
+  <div class="navbar-links">
+    <button class="nav-btn active" data-section="adoptme-section">
+      <i class="fas fa-solid fa-child-reaching"></i>
+      <span>ADOPTME</span>
+    </button>
+    <button class="nav-btn" data-section="petsim-section">
+      <i class="fas fa-solid fa-paw"></i>
+      <span>PETSIM99</span>
+    </button>
+    <div class="navbar-settings">
+      <i class="fas fa-cog settings-icon" onclick="toggleTCGSettingsModal()"></i>
+    </div>
+  </div>
+</nav>
 </div>
 <div id="settings-modal-tcg" class="modal hidden">
   <div class="modal-content">
@@ -54,17 +68,18 @@
 </div>
   <div id="petsim-section" style="display:none;">
       <div class="settings-container">
-    <i class="fas fa-cog settings-icon" onclick="toggleTCGSettingsModal()"></i>
   </div>
-    <h1>Pet Simulator 99</h1>
-    <input type="text" id="searchBar" placeholder="Search for pets...">
+    <h1 class="main-title">Pet Simulator 99</h1>
+    <div class="msl-search">
+    <input type="text" id="searchBar" class="input-unique" placeholder="Search for pets...">
+    </div>
     <div id="petContainer"></div>
   </div>
 
   <div id="adoptme-section">
       <div class="settings-container">
-    <i class="fas fa-cog settings-icon" onclick="toggleTCGSettingsModal()"></i>
   </div>
+  <h1 class="main-title">Adopt Me Value Calculator</h1>
 <div class="trade-calculator">
   <div class="trade-header">
     <div class="offer-value offer-value--yours" id="your-score">0</div>
