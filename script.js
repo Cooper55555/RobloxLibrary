@@ -120,7 +120,7 @@ confirmButton.onclick = () => {
   selectedCell.innerHTML = '';
 
   const container = document.createElement('div');
-  Object.assign(container.style, { position: 'relative', width: '100%', height: '100%' });
+  Object.assign(container.style, { position: 'relative', width: '100%' });
   container.dataset.baseValue = selectedPet.baseValue; // <-- set baseValue here
   container.dataset.traitValue = comboValue;
   container.dataset.traits = traitKey;
@@ -166,19 +166,75 @@ function parseTotalValue(cell) {
   return baseValue + traitValue;
 }
 
+let prefix = 'psu-'; // or '' for adoptme-section
+
 function updateScores() {
+  prefix = detectPrefix();
+
+  const yourGrid = $id('your-grid');
+  const theirGrid = $id('their-grid');
+  const yourScoreEl = $id('your-score');
+  const theirScoreEl = $id('their-score');
+  const yourBar = $id('your-bar');
+  const theirBar = $id('their-bar');
+
+  console.log('prefix:', prefix);
+  console.log('yourGrid children:', yourGrid.children.length);
+  console.log('theirGrid children:', theirGrid.children.length);
+
   const yourTotal = Array.from(yourGrid.children).reduce((sum, c) => sum + parseTotalValue(c), 0);
   const theirTotal = Array.from(theirGrid.children).reduce((sum, c) => sum + parseTotalValue(c), 0);
+  console.log('yourTotal:', yourTotal, 'theirTotal:', theirTotal);
+
   yourScoreEl.textContent = yourTotal;
   theirScoreEl.textContent = theirTotal;
 
-  const total = Math.max(yourTotal + theirTotal, 1);
-  yourBar.style.width = `${(yourTotal / total) * 100}%`;
-  theirBar.style.width = `${(theirTotal / total) * 100}%`;
+  const total = yourTotal + theirTotal;
 
-  document.querySelectorAll('.outcome-label').forEach(el => el.classList.remove('active'));
-  const result = yourTotal > theirTotal ? 'win' : yourTotal === theirTotal ? 'fair' : 'lose';
-  document.getElementById(result).classList.add('active');
+  if (total === 0) {
+    yourBar.style.width = "0%";
+    theirBar.style.width = "0%";
+  } else {
+    yourBar.style.width = `${(yourTotal / total) * 100}%`;
+    theirBar.style.width = `${(theirTotal / total) * 100}%`;
+  }
+
+  const resultKey = yourTotal > theirTotal ? 'win' : yourTotal === theirTotal ? 'fair' : 'lose';
+
+  const outcomeClass = prefix === 'psu-' ? '.psu-outcome' : '.adoptme-outcome';
+  document.querySelectorAll(`${outcomeClass} .outcome-label`).forEach(el => el.classList.remove('active'));
+
+  const resultEl = $id(resultKey);
+  if (resultEl) {
+    resultEl.classList.add('active');
+  }
+}
+
+function $id(id) {
+  return document.getElementById(prefix + id);
+}
+
+function switchSection(sectionId) {
+  document.getElementById('petstarult-section').style.display = 'none';
+  document.getElementById('adoptme-section').style.display = 'none';
+  document.getElementById('petsim-section').style.display = 'none';
+
+  document.getElementById(sectionId).style.display = 'block';
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      updateScores();
+    });
+  });
+}
+
+function detectPrefix() {
+  const psuVisible = window.getComputedStyle(document.getElementById('petstarult-section')).display !== 'none';
+  const adoptMeVisible = window.getComputedStyle(document.getElementById('adoptme-section')).display !== 'none';
+
+  if (psuVisible) return 'psu-';
+  if (adoptMeVisible) return ''; // AdoptMe uses no prefix
+  return '';
 }
 
 function initGrid(grid) {
@@ -215,7 +271,12 @@ initGrid(yourGrid);
 initGrid(theirGrid);
 updateScores();
 
-closeModalBtn.onclick = () => closeModal();
+function closeModalpsu() {
+  petModalPsu.classList.remove("show");
+}
+
+const closeBtnpsu = document.querySelector('.modal-close-psu');
+closeBtnpsu.onclick = () => closeModalpsu();
 
 const closeBtn = document.querySelector('.modal-close');
 closeBtn.onclick = () => closeModal();
@@ -382,7 +443,7 @@ function syncToggleWithDarkMode() {
 }
 
 const navButtons = document.querySelectorAll('.nav-btn');
-const sections = document.querySelectorAll('#petsim-section, #adoptme-section');
+const sections = document.querySelectorAll('#petsim-section, #adoptme-section, #petstarult-section');
 
 navButtons.forEach((btn) => {
   btn.addEventListener('click', async () => {
@@ -483,6 +544,305 @@ function showPetList(filter = '') {
     petContainer.appendChild(card);
   });
 }
+
+// Sample pet data (add more as needed)
+const petsDataPsu = [
+  {
+    name: "knightyellowchick", displayName: "Knight Yellow Chick",
+    image: "./rare/knightyellowchick.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.04, "rainbow": 0.07,
+    }
+  },
+  {
+    name: "pirateaxolotl", displayName: "Pirate Axolotl",
+    image: "./uncommon/pirateaxolotl.png",
+    baseValue: 0.05,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.04, "rainbow": 0.07,
+    }
+  },
+  {
+    name: "firecat", displayName: "Fire Cat",
+    image: "./common/firecat.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.05,
+    }
+  },
+  {
+    name: "rainypanda", displayName: "Rainy Panda",
+    image: "./common/rainypanda.png",
+    baseValue: 0.02,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.05,
+    }
+  },
+  {
+    name: "rainybee", displayName: "Rainy Bee",
+    image: "./common/rainybee.png",
+    baseValue: 0.02,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.05,
+    }
+  }
+];
+
+// DOM elements with psu suffix
+const yourGridPsu = document.getElementById("psu-your-grid");
+const theirGridPsu = document.getElementById("psu-their-grid");
+const yourScoreElPsu = document.getElementById("psu-your-score");
+const theirScoreElPsu = document.getElementById("psu-their-score");
+const yourBarPsu = document.getElementById("psu-your-bar");
+const theirBarPsu = document.getElementById("psu-their-bar");
+const petModalPsu = document.getElementById("psu-trade-pet-modal");
+const petListPsu = document.getElementById("psu-trade-pet-list");
+const petSearchPsu = document.getElementById("psu-trade-pet-name");
+const confirmButtonPsu = document.getElementById("psu-trade-confirm-selection");
+
+// Trait radio buttons
+const traitRadiosPsu = document.querySelectorAll('input[name="psu-trade-trait"]');
+
+// Gold and Rainbow checkboxes
+const goldCheckboxPsu = document.getElementById("psu-trait-gold");
+const rainbowCheckboxPsu = document.getElementById("psu-trait-rainbow");
+
+let selectedCellPsu = null;
+let selectedPetPsu = null;
+
+function renderPetListPsu(filter = "") {
+  petListPsu.innerHTML = "";
+  const filtered = petsDataPsu.filter(p => p.displayName.toLowerCase().includes(filter.toLowerCase()));
+
+  filtered.forEach(pet => {
+    const li = document.createElement("li");
+
+    const img = document.createElement("img");
+    img.src = pet.image;
+    img.alt = pet.displayName;
+    img.onerror = () => img.src = "https://via.placeholder.com/50?text=No+Img";
+
+    li.appendChild(img);
+    li.appendChild(document.createTextNode(pet.displayName));
+li.onclick = () => {
+  petListPsu.querySelectorAll("li").forEach(el => el.classList.remove("selected"));
+  li.classList.add("selected");
+  selectedPetPsu = pet;
+
+  // Enable/disable gold checkbox
+  goldCheckboxPsu.disabled = !pet.canHaveGold;
+  if (!pet.canHaveGold) goldCheckboxPsu.checked = false;
+
+  // Enable/disable rainbow checkbox
+  rainbowCheckboxPsu.disabled = !pet.canHaveRainbow;
+  if (!pet.canHaveRainbow) rainbowCheckboxPsu.checked = false;
+
+  // Enable/disable serial trait radios (numbers) based on canHaveSerial
+  traitRadiosPsu.forEach(radio => {
+    if (!pet.canHaveSerial && !isNaN(Number(radio.value))) {
+      radio.disabled = true;
+      radio.checked = false;
+    } else {
+      radio.disabled = false;
+    }
+  });
+};
+
+    petListPsu.appendChild(li);
+  });
+
+  if (filtered.length === 0) {
+    const li = document.createElement("li");
+    li.textContent = "No pets found.";
+    li.style.color = "#888";
+    petListPsu.appendChild(li);
+  }
+}
+
+function openPSUModalPsu(cell) {
+  selectedCellPsu = cell;
+  selectedPetPsu = null;
+  traitRadiosPsu.forEach(r => {
+    r.checked = false;
+    r.disabled = false;   // reset disabled
+  });
+  goldCheckboxPsu.checked = false;
+  rainbowCheckboxPsu.checked = false;
+  goldCheckboxPsu.disabled = false;
+  rainbowCheckboxPsu.disabled = false;
+  petSearchPsu.value = "";
+  renderPetListPsu();
+
+  petModalPsu.classList.add("show");
+}
+
+function closePSUModalPsu() {
+  petModalPsu.classList.remove("show");
+}
+
+petSearchPsu.addEventListener("input", () => renderPetListPsu(petSearchPsu.value));
+
+// Prevent Gold and Rainbow both checked at the same time
+goldCheckboxPsu.addEventListener("change", () => {
+  if (goldCheckboxPsu.checked && rainbowCheckboxPsu.checked) {
+    rainbowCheckboxPsu.checked = false;
+  }
+});
+rainbowCheckboxPsu.addEventListener("change", () => {
+  if (rainbowCheckboxPsu.checked && goldCheckboxPsu.checked) {
+    goldCheckboxPsu.checked = false;
+  }
+});
+
+// Only one trait can be selected at a time
+traitRadiosPsu.forEach(radio => {
+  radio.addEventListener("change", () => {
+    traitRadiosPsu.forEach(r => {
+      if (r !== radio) r.checked = false;
+    });
+  });
+});
+
+confirmButtonPsu.onclick = () => {
+  if (!selectedPetPsu) {
+    alert("Please select a pet.");
+    return;
+  }
+
+  // Get selected trait radio
+  const selectedTrait = [...traitRadiosPsu].find(r => r.checked);
+  const traitKey = selectedTrait ? selectedTrait.value : "";
+
+  // Compose keys for gold/rainbow depending on traitKey (e.g. gold-1, gold-200)
+  let specialTraitKey = "";
+  if (goldCheckboxPsu.checked) specialTraitKey = `gold`;
+  else if (rainbowCheckboxPsu.checked) specialTraitKey = `rainbow`;
+
+  const traitValue = selectedPetPsu.traitCombos[traitKey] || 0;
+  const specialTraitValue = selectedPetPsu.traitCombos[specialTraitKey] || 0;
+
+  selectedCellPsu.innerHTML = "";
+
+  const container = document.createElement("div");
+  container.style.position = "relative";
+  container.dataset.baseValue = selectedPetPsu.baseValue;
+  container.dataset.traitValue = traitValue + specialTraitValue;
+  container.dataset.traits = [traitKey, specialTraitKey].filter(Boolean).join(",");
+
+  const img = document.createElement("img");
+  img.src = selectedPetPsu.image;
+  img.alt = selectedPetPsu.displayName;
+  img.style.width = "100%";
+  img.style.height = "100%";
+  img.style.objectFit = "contain";
+  img.onerror = () => img.src = "https://via.placeholder.com/80?text=No+Img";
+  container.appendChild(img);
+
+  // Add overlay for trait radio
+  if (traitKey) {
+    const overlay = document.createElement("div");
+    overlay.textContent = `≤${traitKey}`;
+    Object.assign(overlay.style, {
+      position: "absolute",
+      bottom: "8px",
+      right: "4px",
+      background: "rgba(0,0,0,0.6)",
+      color: "white",
+      fontWeight: "bold",
+      fontSize: "14px",
+      padding: "4px",
+      borderRadius: "4px",
+      userSelect: "none"
+    });
+    container.appendChild(overlay);
+  }
+
+  // Instead of an overlay div, just set background color of container
+  if (specialTraitKey) {
+    const displayName = specialTraitKey.split("-")[0]; // gold or rainbow
+    container.style.backgroundColor = displayName === "gold" 
+      ? "rgba(255,215,0,0.3)"   // translucent gold/yellow
+      : "rgba(148,0,211,0.3)";  // translucent purple
+  }
+
+  selectedCellPsu.appendChild(container);
+  selectedCellPsu.style.color = "";
+  closePSUModalPsu();
+  updateScoresPsu();
+};
+
+function parseTotalValuePsu(cell) {
+  const container = cell.querySelector("div");
+  if (!container) return 0;
+  const base = Number(container.dataset.baseValue) || 0;
+  const trait = Number(container.dataset.traitValue) || 0;
+  return base + trait;
+}
+
+function updateScoresPsu() {
+  const yourTotal = Array.from(yourGridPsu.children).reduce((sum, c) => sum + parseTotalValuePsu(c), 0);
+  const theirTotal = Array.from(theirGridPsu.children).reduce((sum, c) => sum + parseTotalValuePsu(c), 0);
+
+  yourScoreElPsu.textContent = yourTotal.toFixed(2);
+  theirScoreElPsu.textContent = theirTotal.toFixed(2);
+
+  const total = yourTotal + theirTotal;
+
+  if (total === 0) {
+    yourBarPsu.style.width = "0%";
+    theirBarPsu.style.width = "0%";
+  } else {
+    yourBarPsu.style.width = `${((yourTotal / total) * 100).toFixed(2)}%`;
+    theirBarPsu.style.width = `${((theirTotal / total) * 100).toFixed(2)}%`;
+  }
+
+  // Remove active only from PETSTARULT outcome labels
+  document.querySelectorAll(".psu-outcome .outcome-label").forEach(el => el.classList.remove("active"));
+
+  const result = yourTotal > theirTotal ? "win" : yourTotal === theirTotal ? "fair" : "lose";
+
+  const resultEl = document.getElementById(`psu-${result}`);
+  if (resultEl) resultEl.classList.add("active");
+}
+
+function initGridPsu(grid) {
+  for (let i = 0; i < 9; i++) {
+    const cell = document.createElement("div");
+    Object.assign(cell.style, {
+      cursor: "pointer",
+      fontSize: "28px",
+      color: "#888",
+      userSelect: "none",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+    });
+    cell.textContent = "+";
+
+    cell.onclick = () => {
+      if (cell.textContent === "+") {
+        openPSUModalPsu(cell);
+      } else {
+        cell.innerHTML = "+";
+        cell.style.color = "#888";
+        updateScoresPsu();
+      }
+    };
+
+    grid.appendChild(cell);
+  }
+}
+
+// Launch
+initGridPsu(yourGridPsu);
+initGridPsu(theirGridPsu);
+updateScoresPsu();
 
 function showPetDetails(pet) {
   extraContainer.style.display = 'none';

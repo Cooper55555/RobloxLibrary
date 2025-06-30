@@ -4,132 +4,174 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Roblox DataLibrary</title>
-    <link rel="stylesheet" href="style.css" />
-      <link
+  <link rel="stylesheet" href="style.css" />
+  <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
   />
-      <link rel="icon" href="https://cdn.discordapp.com/avatars/1339214670099382382/7e0935121ed73e51d4cf8ab3442feb4c.webp?size=100" type="image/x-icon">
-  </head>
+  <link rel="icon" href="https://cdn.discordapp.com/avatars/1339214670099382382/7e0935121ed73e51d4cf8ab3442feb4c.webp?size=100" type="image/x-icon">
+</head>
 <body>
   <div class="extra-container">
-<nav id="main-navbar" class="navbar">
-  <a href="https://cooper55555.github.io/DataLibrary/" class="navbar-logo" style="text-decoration: none;">
-    <div class="logo-container">
-      <i class="fas fa-database logo-icon"></i>
-      <span class="logo-text">DataLibrary</span>
-    </div>
-  </a>
-  <div class="navbar-links">
-    <button class="nav-btn active" data-section="adoptme-section">
-      <i class="fas fa-solid fa-child-reaching"></i>
-      <span>ADOPTME</span>
-    </button>
-    <button class="nav-btn" data-section="petsim-section">
-      <i class="fas fa-solid fa-paw"></i>
-      <span>PETSIM99</span>
-    </button>
-    <div class="navbar-settings">
-      <i class="fas fa-cog settings-icon" onclick="toggleTCGSettingsModal()"></i>
+    <nav id="main-navbar" class="navbar">
+      <a href="https://cooper55555.github.io/DataLibrary/" class="navbar-logo" style="text-decoration: none;">
+        <div class="logo-container">
+          <i class="fas fa-database logo-icon"></i>
+          <span class="logo-text">DataLibrary</span>
+        </div>
+      </a>
+      <div class="navbar-links">
+        <button class="nav-btn active" data-section="petstarult-section">
+          <i class="fas fa-solid fa-money-bill"></i>
+          <span>PETSTARULT</span>
+        </button>
+        <button class="nav-btn" data-section="adoptme-section">
+          <i class="fas fa-solid fa-money-check"></i>
+          <span>ADOPTME</span>
+        </button>
+        <button class="nav-btn" data-section="petsim-section">
+          <i class="fas fa-solid fa-paw"></i>
+          <span>PETSIM99</span>
+        </button>
+        <div class="navbar-settings">
+          <i class="fas fa-cog settings-icon" onclick="toggleTCGSettingsModal()"></i>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div id="settings-modal-tcg" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button" onclick="toggleTCGSettingsModal()">×</span>
+      <h2>Settings</h2>
+      <div class="switch-container">
+        <label class="switch">
+          <input type="checkbox" id="darkModeToggleModal" />
+          <span class="slider"></span>
+        </label>
+        <span>Dark Mode</span>
+      </div>
+      <div class="social-button-container">
+        <a href="https://discord.gg/t5BGDzzSXg" target="_blank" class="social-button discord">
+          <i class="fab fa-discord"></i>
+        </a>
+        <a href="https://median.co/share/kbqjqo#apk" target="_blank" class="social-button android">
+          <i class="fab fa-android"></i>
+        </a>
+      </div>
     </div>
   </div>
-</nav>
-</div>
-<div id="settings-modal-tcg" class="modal hidden">
-  <div class="modal-content">
-    <span class="close-button" onclick="toggleTCGSettingsModal()">×</span>
-    <h2>Settings</h2>
 
-    <div class="switch-container">
-      <label class="switch">
-        <input
-          type="checkbox"
-          id="darkModeToggleModal"
-        />
-        <span class="slider"></span>
-      </label>
-      <span>Dark Mode</span>
+<div id="petstarult-section">
+  <div class="settings-container"></div>
+  <h1 class="main-title">Pet Star Ultimate Value Calculator</h1>
+
+  <div class="trade-calculator">
+    <div class="trade-header">
+      <div class="offer-value offer-value--yours" id="psu-your-score">0</div>
+      <div class="trade-outcome psu-outcome">
+        <span class="outcome-label outcome-label-psu" id="psu-lose">WIN</span>
+        <span class="outcome-label outcome-label-psu active" id="psu-fair">FAIR</span>
+        <span class="outcome-label outcome-label-psu" id="psu-win">LOSE</span>
+      </div>
+      <div class="offer-value offer-value--theirs" id="psu-their-score">0</div>
     </div>
 
-    <div class="social-button-container">
-      <a
-        href="https://discord.gg/t5BGDzzSXg"
-        target="_blank"
-        class="social-button discord"
-        ><i class="fab fa-discord"></i
-      ></a>
-      <a
-        href="https://median.co/share/kbqjqo#apk"
-        target="_blank"
-        class="social-button android"
-        ><i class="fab fa-android"></i
-      ></a>
+    <div class="trade-bars">
+      <div class="value-bar value-bar--yours" id="psu-your-bar"></div>
+      <div class="value-bar value-bar--theirs" id="psu-their-bar"></div>
+    </div>
+
+    <div class="trade-grids">
+      <div class="trade-grid trade-grid--yours" id="psu-your-grid"></div>
+      <div class="trade-grid trade-grid--theirs" id="psu-their-grid"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay trade-modal-overlay" id="psu-trade-pet-modal">
+    <div class="modal trade-modal">
+      <button class="modal-close-psu psu-trade-modal-close" aria-label="Close modal">&times;</button>
+
+      <input type="text" id="psu-trade-pet-name" placeholder="Pet name..." class="trade-pet-search-input" />
+      <input type="number" id="psu-trade-pet-value" placeholder="Value" class="trade-pet-search-input" style="display:none" />
+
+      <ul id="psu-trade-pet-list" class="trade-pet-list"></ul>
+
+      <div class="traits trade-traits">
+        <label><input type="checkbox" name="psu-trade-trait" value="1" /> Serial 1</label>
+        <label><input type="checkbox" name="psu-trade-trait" value="10" /> Serial 2-10</label>
+        <label><input type="checkbox" name="psu-trade-trait" value="100" /> Serial 11-100</label>
+        <label><input type="checkbox" name="psu-trade-trait" value="200" /> Serial 101-200</label>
+        <label><input type="checkbox" name="psu-trade-trait" value="250" /> Serial 201-250</label>
+        <label><input type="checkbox" id="psu-trait-gold" name="psu-trait-special" value="gold"> Gold</label>
+        <label><input type="checkbox" id="psu-trait-rainbow" name="psu-trait-special" value="rainbow"> Rainbow</label>
+      </div>
+      <button id="psu-trade-confirm-selection">Add Pet</button>
     </div>
   </div>
 </div>
+
   <div id="petsim-section" style="display:none;">
-      <div class="settings-container">
-  </div>
+    <div class="settings-container"></div>
     <h1 class="main-title">Pet Simulator 99</h1>
     <div class="msl-search">
-    <input type="text" id="searchBar" class="input-unique" placeholder="Search for pets...">
+      <input type="text" id="searchBar" class="input-unique" placeholder="Search for pets...">
     </div>
     <div id="petContainer"></div>
   </div>
 
-  <div id="adoptme-section">
-      <div class="settings-container">
-  </div>
-  <h1 class="main-title">Adopt Me Value Calculator</h1>
-<div class="trade-calculator">
-  <div class="trade-header">
-    <div class="offer-value offer-value--yours" id="your-score">0</div>
-    <div class="trade-outcome">
-      <span class="outcome-label" id="win">LOSE</span>
-      <span class="outcome-label active" id="fair">FAIR</span>
-      <span class="outcome-label" id="lose">WIN</span>
-    </div>
-    <div class="offer-value offer-value--theirs" id="their-score">0</div>
-  </div>
-
-  <div class="trade-bars">
-    <div class="value-bar value-bar--yours" id="your-bar"></div>
-    <div class="value-bar value-bar--theirs" id="their-bar"></div>
-  </div>
-
-  <div class="trade-grids">
-    <div class="trade-grid trade-grid--yours" id="your-grid"></div>
-    <div class="trade-grid trade-grid--theirs" id="their-grid"></div>
-  </div>
-</div>
-
-<div class="modal-overlay trade-modal-overlay" id="trade-pet-modal">
-  <div class="modal trade-modal">
-    <button class="modal-close trade-modal-close" aria-label="Close modal">&times;</button>
-    <input type="text" id="trade-pet-search" placeholder="Search pet..." class="trade-pet-search-input" />
-    <ul id="trade-pet-list" class="trade-pet-list"></ul>
-
-    <div class="traits trade-traits">
-      <label><input type="checkbox" id="trade-flyable" /> Flyable (F)</label>
-      <label><input type="checkbox" id="trade-rideable" /> Rideable (R)</label>
-      <label><input type="checkbox" id="trade-neon" /> Neon (N)</label>
-      <label><input type="checkbox" id="trade-mega" /> Mega (M)</label>
+  <div id="adoptme-section" style="display: none;">
+    <div class="settings-container"></div>
+    <h1 class="main-title">Adopt Me Value Calculator</h1>
+  <div class="trade-calculator">
+    <div class="trade-header">
+      <div class="offer-value offer-value--yours" id="your-score">0</div>
+      <div class="trade-outcome adoptme-outcome">
+        <span class="outcome-label" id="lose">WIN</span>
+        <span class="outcome-label active" id="fair">FAIR</span>
+        <span class="outcome-label" id="win">LOSE</span>
+      </div>
+      <div class="offer-value offer-value--theirs" id="their-score">0</div>
     </div>
 
-    <button id="trade-confirm-selection">Add Pet</button>
+      <div class="trade-bars">
+        <div class="value-bar value-bar--yours" id="your-bar"></div>
+        <div class="value-bar value-bar--theirs" id="their-bar"></div>
+      </div>
+
+      <div class="trade-grids">
+        <div class="trade-grid trade-grid--yours" id="your-grid"></div>
+        <div class="trade-grid trade-grid--theirs" id="their-grid"></div>
+      </div>
     </div>
-  </div>
+
+    <div class="modal-overlay trade-modal-overlay" id="trade-pet-modal">
+      <div class="modal trade-modal">
+        <button class="modal-close trade-modal-close" aria-label="Close modal">&times;</button>
+        <input type="text" id="trade-pet-search" placeholder="Search pet..." class="trade-pet-search-input" />
+        <ul id="trade-pet-list" class="trade-pet-list"></ul>
+
+        <div class="traits trade-traits">
+          <label><input type="checkbox" id="trade-flyable" /> Flyable (F)</label>
+          <label><input type="checkbox" id="trade-rideable" /> Rideable (R)</label>
+          <label><input type="checkbox" id="trade-neon" /> Neon (N)</label>
+          <label><input type="checkbox" id="trade-mega" /> Mega (M)</label>
+        </div>
+
+        <button id="trade-confirm-selection">Add Pet</button>
+      </div>
+    </div>
   </div>
 
   <div id="loading-screen">
-  <div class="spinner"></div>
-  <p>Loading pets, please wait...</p>
-</div>
+    <div class="spinner"></div>
+    <p>Loading pets, please wait...</p>
+  </div>
 
-      <div class="copyright-container">
+  <div class="copyright-container">
     <h5>© 2025 DataLibrary. This website has been made by Cooper and Pepper.</h5>
   </div>
-    <script src="script.js"></script>
-    </script>
+
+  <script src="script.js"></script>
 </body>
 </html>

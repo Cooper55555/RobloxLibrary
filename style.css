@@ -640,9 +640,9 @@ body.dark-mode .input-unique {
 }
 
 .outcome-label.active {
-  background: #ffb347;
+  background: #ffb347 !important;
   opacity: 1;
-  color: #fff;
+  color: #fff !important;
 }
 
 .trade-bars {
@@ -683,12 +683,11 @@ body.dark-mode .input-unique {
 .trade-grid div {
   background: #ffeadd;
   border: 3px solid #ff6f6f;
-  border-radius: 8px;
+  border-radius: 8%;
   aspect-ratio: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
   color: #444;
   cursor: pointer;
   position: relative;
@@ -752,7 +751,8 @@ body.dark-mode .input-unique {
 }
 
 /* Modal close button */
-.trade-modal-close {
+.trade-modal-close,
+.psu-trade-modal-close {
   position: absolute;
   top: 16px;
   right: 16px;
@@ -767,6 +767,10 @@ body.dark-mode .input-unique {
   line-height: 1;
 }
 .trade-modal-close:hover {
+  color: #ff6f6f;
+}
+
+.psu-trade-modal-close:hover {
   color: #ff6f6f;
 }
 
@@ -903,6 +907,41 @@ body.dark-mode .input-unique {
 
 /* Prevent clicks from propagating if you want to close modal only by X button */
 #trade-pet-modal.show > .trade-modal {
+  pointer-events: auto;
+}
+
+#psu-trade-confirm-selection {
+  width: 100%;
+  padding: 14px;
+  background: #ffb347;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s;
+  box-shadow: 0 4px 8px rgb(255 179 71 / 0.6);
+}
+
+#psu-trade-confirm-selection:hover {
+  background: #ffa31a;
+}
+
+/* Modal overlay show */
+#psu-trade-pet-modal.show {
+  display: flex;
+}
+
+/* Make sure modal allows pointer events */
+.trade-modal {
+  pointer-events: auto;
+  position: relative;
+}
+
+/* Prevent clicks outside modal to close */
+#psu-trade-pet-modal.show > .trade-modal {
   pointer-events: auto;
 }
 
