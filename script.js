@@ -17,8 +17,6 @@ const theirBar = document.getElementById('their-bar');
 
 const closeModalBtn = petModal.querySelector('.trade-modal-close');
 
-const petQuantityInputPsu = document.getElementById("psu-trade-pet-quantity");
-
 let petsData = [];
 let selectedCell = null;
 let selectedPet = null;
@@ -221,7 +219,8 @@ function switchSection(sectionId) {
   document.getElementById('adoptme-section').style.display = 'none';
   document.getElementById('petsim-section').style.display = 'none';
 
-  document.getElementById(sectionId).style.display = 'block';
+    document.getElementById(sectionId).style.display = 'block';
+  updateScores();
 
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
@@ -662,6 +661,8 @@ const petListPsu = document.getElementById("psu-trade-pet-list");
 const petSearchPsu = document.getElementById("psu-trade-pet-name");
 const confirmButtonPsu = document.getElementById("psu-trade-confirm-selection");
 
+const petQuantityInputPsu = document.getElementById("psu-trade-pet-quantity");
+
 // Trait radio buttons
 const traitRadiosPsu = document.querySelectorAll('input[name="psu-trade-trait"]');
 
@@ -674,7 +675,14 @@ let selectedPetPsu = null;
 
 function renderPetListPsu(filter = "") {
   petListPsu.innerHTML = "";
-  const filtered = petsDataPsu.filter(p => p.displayName.toLowerCase().includes(filter.toLowerCase()));
+
+  const filtered = petsDataPsu.filter(pet => {
+    const matchesName   = pet.displayName.toLowerCase()
+                            .includes(filter.toLowerCase());
+    const matchesRarity = psuCurrentRarity === "all"
+                            || psuGetRarity(pet) === psuCurrentRarity;
+    return matchesName && matchesRarity;
+  });
 
   filtered.forEach(pet => {
     const li = document.createElement("li");
@@ -931,6 +939,33 @@ function initGridPsu(grid) {
 initGridPsu(yourGridPsu);
 initGridPsu(theirGridPsu);
 updateScoresPsu();
+
+/* -------------------------  FILTER‑BUTTON SUPPORT  ------------------------ */
+
+/** keeps track of which rarity tab is active */
+let psuCurrentRarity = "all";
+
+/** return “common”, “uncommon”, … by reading the folder name in ./<rarity>/… */
+function psuGetRarity(pet) {
+  // "./rare/knightyellowchick.png"  →  "rare"
+  const m = pet.image.match(/\.\/([^/]+)\//);
+  return m ? m[1] : "all";
+}
+
+/** add click‑handlers to every rarity button */
+document.querySelectorAll(".psu-filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    // 1. visual feedback
+    document.querySelectorAll(".psu-filter-btn")
+            .forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    // 2. update active filter & re‑render list
+    psuCurrentRarity = btn.dataset.filter;          // "all" | "common" | …
+    renderPetListPsu(petSearchPsu.value);           // reuse existing search box value
+  });
+});
+
 
 function showPetDetails(pet) {
   extraContainer.style.display = 'none';
