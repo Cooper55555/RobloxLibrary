@@ -676,8 +676,15 @@ body.dark-mode .input-unique {
 .trade-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  width: 45%;
+  grid-auto-rows: 80px;       /* Each row height */
+  gap: 15px;
+  width: 45%;               /* Adjust width to fit 3 columns */
+  height: 300px;              /* Show roughly 3 rows high (3 * 80 + gaps) */
+  overflow-y: auto;           /* Enable vertical scroll */
+  border: 1px solid #ccc;
+  padding: 8px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
 }
 
 .trade-grid div {
@@ -1028,12 +1035,10 @@ body.dark-mode .input-unique {
 
   /* Each grid styled as grid to hold pets nicely */
   .trade-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    width: 100%;
-    height: auto;
-    min-height: 140px;
+    width: 100%;           /* Almost full width on phones */
+    height: 240px;        /* Slightly smaller height */
+    grid-auto-rows: 60px; /* Smaller cells for smaller screens */
+    gap: 15px;
   }
 
   /* Modal styles */

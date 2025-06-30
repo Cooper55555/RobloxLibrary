@@ -843,8 +843,10 @@ function updateScoresPsu() {
   if (resultEl) resultEl.classList.add("active");
 }
 
+
 function initGridPsu(grid) {
-  for (let i = 0; i < 9; i++) {
+  grid.innerHTML = ""; // Clear any existing cells
+  for (let i = 0; i < 27; i++) { // 3 width * 9 height = 27 cells
     const cell = document.createElement("div");
     Object.assign(cell.style, {
       cursor: "pointer",
