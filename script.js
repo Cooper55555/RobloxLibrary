@@ -593,7 +593,61 @@ const petsDataPsu = [
     traitCombos: {
       "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.05,
     }
-  }
+  },
+  {
+    name: "cat", displayName: "Cat",
+    image: "./common/cat.png",
+    baseValue: 0.01,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.01, "rainbow": 0.03,
+    }
+  },
+  {
+    name: "dog", displayName: "Dog",
+    image: "./common/dog.png",
+    baseValue: 0.01,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.01, "rainbow": 0.03,
+    }
+  },
+  {
+    name: "ultimatesmoothie", displayName: "Ultimate Smoothie",
+    image: "./exotic/ultimatesmoothie.png",
+    baseValue: 8,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "heavenlysmoothie", displayName: "Heavenly Smoothie",
+    image: "./legendary/heavenlysmoothie.png",
+    baseValue: 3.5,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "lucksmoothie", displayName: "Luck Smoothie",
+    image: "./rare/lucksmoothie.png",
+    baseValue: 0.3,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "diamondsmoothie", displayName: "Diamond Smoothie",
+    image: "./rare/diamondsmoothie.png",
+    baseValue: 0.3,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
 ];
 
 // DOM elements with psu suffix
