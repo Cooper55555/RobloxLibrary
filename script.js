@@ -17,6 +17,8 @@ const theirBar = document.getElementById('their-bar');
 
 const closeModalBtn = petModal.querySelector('.trade-modal-close');
 
+const petQuantityInputPsu = document.getElementById("psu-trade-pet-quantity");
+
 let petsData = [];
 let selectedCell = null;
 let selectedPet = null;
@@ -677,8 +679,8 @@ function openPSUModalPsu(cell) {
   goldCheckboxPsu.disabled = false;
   rainbowCheckboxPsu.disabled = false;
   petSearchPsu.value = "";
+  petQuantityInputPsu.value = 1; // reset quantity
   renderPetListPsu();
-
   petModalPsu.classList.add("show");
 }
 
@@ -715,6 +717,17 @@ confirmButtonPsu.onclick = () => {
     return;
   }
 
+  // Get quantity (minimum 1)
+let quantity = parseInt(petQuantityInputPsu.value, 10);
+if (isNaN(quantity) || quantity < 1) {
+  alert("Please enter a valid quantity (1 or more).");
+  return;
+}
+if (quantity > 1000) {
+  alert("Maximum quantity allowed is 1000.");
+  return;
+}
+
   // Get selected trait radio
   const selectedTrait = [...traitRadiosPsu].find(r => r.checked);
   const traitKey = selectedTrait ? selectedTrait.value : "";
@@ -734,6 +747,7 @@ confirmButtonPsu.onclick = () => {
   container.dataset.baseValue = selectedPetPsu.baseValue;
   container.dataset.traitValue = traitValue + specialTraitValue;
   container.dataset.traits = [traitKey, specialTraitKey].filter(Boolean).join(",");
+  container.dataset.quantity = quantity;  // Store quantity
 
   const img = document.createElement("img");
   img.src = selectedPetPsu.image;
@@ -744,7 +758,24 @@ confirmButtonPsu.onclick = () => {
   img.onerror = () => img.src = "https://via.placeholder.com/80?text=No+Img";
   container.appendChild(img);
 
-  // Add overlay for trait radio
+  // Quantity overlay
+  const qtyOverlay = document.createElement("div");
+  qtyOverlay.textContent = `x${quantity}`;
+  Object.assign(qtyOverlay.style, {
+    position: "absolute",
+    top: "4px",
+    left: "4px",
+    background: "rgba(0,0,0,0.6)",
+    color: "white",
+    fontWeight: "bold",
+    fontSize: "14px",
+    padding: "2px 6px",
+    borderRadius: "4px",
+    userSelect: "none"
+  });
+  container.appendChild(qtyOverlay);
+
+  // Trait overlay
   if (traitKey) {
     const overlay = document.createElement("div");
     overlay.textContent = `≤${traitKey}`;
@@ -763,7 +794,7 @@ confirmButtonPsu.onclick = () => {
     container.appendChild(overlay);
   }
 
-  // Instead of an overlay div, just set background color of container
+  // Background color for special traits
   if (specialTraitKey) {
     const displayName = specialTraitKey.split("-")[0]; // gold or rainbow
     container.style.backgroundColor = displayName === "gold" 
@@ -782,7 +813,8 @@ function parseTotalValuePsu(cell) {
   if (!container) return 0;
   const base = Number(container.dataset.baseValue) || 0;
   const trait = Number(container.dataset.traitValue) || 0;
-  return base + trait;
+  const quantity = Number(container.dataset.quantity) || 1;
+  return (base + trait) * quantity;
 }
 
 function updateScoresPsu() {
