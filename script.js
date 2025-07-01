@@ -549,12 +549,273 @@ function showPetList(filter = '') {
 // Sample pet data (add more as needed)
 const petsDataPsu = [
   {
+    name: "ticket", displayName: "Ticket",
+    image: "./common/ticket.png",
+    baseValue: 1,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "themythicaldragon", displayName: "The Mythical Dragon",
+    image: "./exclusive/themythicaldragon.png",
+    baseValue: 3,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 3, "rainbow": 6,
+    }
+  },
+  {
+    name: "eggbee", displayName: "Egg Bee",
+    image: "./exotic/eggbee.png",
+    baseValue: 60,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 350, "rainbow": 760,
+    }
+  },
+  {
+    name: "boatingaxolotl", displayName: "Boating Axolotl",
+    image: "./exotic/boatingaxolotl.png",
+    baseValue: 10,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 20, "rainbow": 110,
+    }
+  },
+  {
+    name: "evilaxolotl", displayName: "Evil Axolotl",
+    image: "./godly/evilaxolotl.png",
+    baseValue: 0.1,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.1, "rainbow": 0.2,
+    }
+  },
+  {
+    name: "royaldeity", displayName: "Royal Deity",
+    image: "./godly/royaldeity.png",
+    baseValue: 0.09,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.09, "rainbow": 0.18,
+    }
+  },
+  {
+    name: "dominusbee", displayName: "Dominus Bee",
+    image: "./mythic/dominusbee.png",
+    baseValue: 0.11,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.11, "rainbow": 0.22,
+    }
+  },
+  {
+    name: "fluffycaptaincat", displayName: "Fluffy Captain Cat",
+    image: "./mythic/fluffycaptaincat.png",
+    baseValue: 0.1,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.1, "rainbow": 0.2,
+    }
+  },
+  {
+    name: "flamingkitsune", displayName: "Flaming Kitsune",
+    image: "./mythic/flamingkitsune.png",
+    baseValue: 0.09,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.09, "rainbow": 0.18,
+    }
+  },
+  {
+    name: "diamonddragon", displayName: "Diamond Dragon",
+    image: "./legendary/diamonddragon.png",
+    baseValue: 0.08,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.08, "rainbow": 0.16,
+    }
+  },
+  {
+    name: "stormydragon", displayName: "Stormy Dragon",
+    image: "./legendary/stormydragon.png",
+    baseValue: 0.06,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.06, "rainbow": 0.12,
+    }
+  },
+  {
+    name: "thelegendarydragon", displayName: "The Legendary Dragon",
+    image: "./legendary/thelegendarydragon.png",
+    baseValue: 0.05,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.05, "rainbow": 0.1,
+    }
+  },
+  {
+    name: "flowerbee", displayName: "Flower Bee",
+    image: "./epic/flowerbee.png",
+    baseValue: 0.08,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.08, "rainbow": 0.16,
+    }
+  },
+  {
+    name: "diamondkitsune", displayName: "Diamond Kitsune",
+    image: "./rare/diamondkitsune.png",
+    baseValue: 0.07,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.07, "rainbow": 0.14,
+    }
+  },
+  {
+    name: "pirateskeleton", displayName: "Pirate Skeleton",
+    image: "./rare/pirateskeleton.png",
+    baseValue: 0.06,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.06, "rainbow": 0.12,
+    }
+  },
+  {
+    name: "flamingdragon", displayName: "Flaming Dragon",
+    image: "./rare/flamingdragon.png",
+    baseValue: 0.05,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.05, "rainbow": 0.1,
+    }
+  },
+  {
+    name: "rainynoob", displayName: "Rainy Noob",
+    image: "./rare/rainynoob.png",
+    baseValue: 0.04,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.04, "rainbow": 0.08,
+    }
+  },
+  {
     name: "knightyellowchick", displayName: "Knight Yellow Chick",
     image: "./rare/knightyellowchick.png",
     baseValue: 0.03,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
     traitCombos: {
-      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.04, "rainbow": 0.07,
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "knightnoob", displayName: "Knight Noob",
+    image: "./rare/knightnoob.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "celestialdragon", displayName: "Celestial Dragon",
+    image: "./rare/celestialdragon.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "dominusvespertillio", displayName: "Dominus Vespertillio",
+    image: "./rare/dominusvespertillio.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "mysticalfox", displayName: "Mystical Fox",
+    image: "./rare/mysticalfox.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "ruinsdragon", displayName: "Ruins Dragon",
+    image: "./rare/ruinsdragon.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "snowman", displayName: "Snowman",
+    image: "./rare/snowman.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "yeti", displayName: "Yeti",
+    image: "./rare/yeti.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "dominus", displayName: "Dominus",
+    image: "./rare/dominus.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "sandfox", displayName: "Sand Fox",
+    image: "./rare/sandfox.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "fox", displayName: "Fox",
+    image: "./rare/fox.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "dragon", displayName: "Dragon",
+    image: "./rare/dragon.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "diamondskeleton", displayName: "Diamond Skeleton",
+    image: "./uncommon/diamondskeleton.png",
+    baseValue: 0.05,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.05, "rainbow": 0.1,
     }
   },
   {
@@ -563,7 +824,232 @@ const petsDataPsu = [
     baseValue: 0.05,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
     traitCombos: {
-      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.04, "rainbow": 0.07,
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.05, "rainbow": 0.1,
+    }
+  },
+  {
+    name: "royalfluffycat", displayName: "Royal Fluffy Cat",
+    image: "./uncommon/royalfluffycat.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "royaldeer", displayName: "Royal Deer",
+    image: "./uncommon/royaldeer.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "knightdragon", displayName: "Knight Dragon",
+    image: "./uncommon/knightdragon.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "knightdog", displayName: "Knight Dog",
+    image: "./uncommon/knightdog.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "nightfallpanda", displayName: "Nightfall Panda",
+    image: "./uncommon/nightfallpanda.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "nightfallyellowchick", displayName: "Nightfall Yellow Chick",
+    image: "./uncommon/nightfallyellowchick.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "rockdragon", displayName: "Rock Dragon",
+    image: "./uncommon/rockdragon.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "stonegolem", displayName: "Stone Golem",
+    image: "./uncommon/stonegolem.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "kitsune", displayName: "Kitsune",
+    image: "./uncommon/kitsune.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "fluffycat", displayName: "Fluffy Cat",
+    image: "./uncommon/fluffycat.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "panda", displayName: "Panda",
+    image: "./uncommon/panda.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "ruinsdeer", displayName: "Ruins Deer",
+    image: "./uncommon/ruinsdeer.png",
+    baseValue: 0.02,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.04,
+    }
+  },
+  {
+    name: "ruinscat", displayName: "Ruins Cat",
+    image: "./uncommon/ruinscat.png",
+    baseValue: 0.02,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.04,
+    }
+  },
+  {
+    name: "polarbear", displayName: "Polar Bear",
+    image: "./uncommon/polarbear.png",
+    baseValue: 0.02,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.04,
+    }
+  },
+  {
+    name: "snowdragon", displayName: "Snow Dragon",
+    image: "./uncommon/snowdragon.png",
+    baseValue: 0.02,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.04,
+    }
+  },
+  {
+    name: "sandcat", displayName: "Sand Cat",
+    image: "./uncommon/sandcat.png",
+    baseValue: 0.02,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.04,
+    }
+  },
+  {
+    name: "blueaxolotl", displayName: "Blue Axolotl",
+    image: "./uncommon/blueaxolotl.png",
+    baseValue: 0.02,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.04,
+    }
+  },
+  {
+    name: "deer", displayName: "Deer",
+    image: "./uncommon/deer.png",
+    baseValue: 0.02,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.04,
+    }
+  },
+  {
+    name: "noob", displayName: "Noob",
+    image: "./uncommon/noob.png",
+    baseValue: 0.02,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.04,
+    }
+  },
+  {
+    name: "bunny", displayName: "Bunny",
+    image: "./uncommon/bunny.png",
+    baseValue: 0.02,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.04,
+    }
+  },
+  {
+    name: "firebee", displayName: "Fire Bee",
+    image: "./common/firebee.png",
+    baseValue: 0.05,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.05, "rainbow": 0.1,
+    }
+  },
+  {
+    name: "crimsonbee", displayName: "Crimson Bee",
+    image: "./common/crimsonbee.png",
+    baseValue: 0.05,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.05, "rainbow": 0.1,
+    }
+  },
+  {
+    name: "diamondgolem", displayName: "Diamond Golem",
+    image: "./common/diamondgolem.png",
+    baseValue: 0.04,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.04, "rainbow": 0.08,
+    }
+  },
+  {
+    name: "piratedalmatian", displayName: "Pirate Dalmatian",
+    image: "./common/piratedalmatian.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "skeleton", displayName: "Skeleton",
+    image: "./common/skeleton.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
     }
   },
   {
@@ -572,25 +1058,106 @@ const petsDataPsu = [
     baseValue: 0.03,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
     traitCombos: {
-      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.05,
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
     }
   },
   {
     name: "rainypanda", displayName: "Rainy Panda",
     image: "./common/rainypanda.png",
-    baseValue: 0.02,
+    baseValue: 0.03,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
     traitCombos: {
-      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.05,
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
     }
   },
   {
     name: "rainybee", displayName: "Rainy Bee",
     image: "./common/rainybee.png",
+    baseValue: 0.03,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.03, "rainbow": 0.06,
+    }
+  },
+  {
+    name: "royalbunny", displayName: "Royal Bunny",
+    image: "./common/royalbunny.png",
     baseValue: 0.02,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
     traitCombos: {
-      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.05,
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.04,
+    }
+  },
+  {
+    name: "knightcat", displayName: "Knight Cat",
+    image: "./common/knightcat.png",
+    baseValue: 0.02,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.04,
+    }
+  },
+  {
+    name: "nightfallbee", displayName: "Nightfall Bee",
+    image: "./common/nightfallbee.png",
+    baseValue: 0.02,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.04,
+    }
+  },
+  {
+    name: "rockaxolotl", displayName: "Rock Axolotl",
+    image: "./common/rockaxolotl.png",
+    baseValue: 0.02,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.04,
+    }
+  },
+  {
+    name: "pinkbee", displayName: "Pink Bee",
+    image: "./common/pinkbee.png",
+    baseValue: 0.02,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.02, "rainbow": 0.04,
+    }
+  },
+  {
+    name: "bee", displayName: "Bee",
+    image: "./common/bee.png",
+    baseValue: 0.01,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.01, "rainbow": 0.02,
+    }
+  },
+  {
+    name: "snowdog", displayName: "Snow Dog",
+    image: "./common/snowdog.png",
+    baseValue: 0.01,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.01, "rainbow": 0.02,
+    }
+  },
+  {
+    name: "pinkaxolotl", displayName: "Pink Axolotl",
+    image: "./common/pinkaxolotl.png",
+    baseValue: 0.01,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.01, "rainbow": 0.02,
+    }
+  },
+  {
+    name: "yellowchick", displayName: "Yellow Chick",
+    image: "./common/yellowchick.png",
+    baseValue: 0.01,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.01, "rainbow": 0.02,
     }
   },
   {
@@ -599,7 +1166,7 @@ const petsDataPsu = [
     baseValue: 0.01,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
     traitCombos: {
-      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.01, "rainbow": 0.03,
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.01, "rainbow": 0.02,
     }
   },
   {
@@ -608,7 +1175,7 @@ const petsDataPsu = [
     baseValue: 0.01,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
     traitCombos: {
-      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.01, "rainbow": 0.03,
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0.01, "rainbow": 0.02,
     }
   },
   {

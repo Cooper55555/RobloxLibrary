@@ -1340,6 +1340,7 @@ body.dark-mode .msl-search input {
     gap: 70px 20px;
     height: 600px;  /* Taller grids */
     grid-auto-rows: 120px; /* Larger row height */
+    padding: 16px;
   }
 
   .trade-modal {
