@@ -596,7 +596,7 @@ const petsDataPsu = [
   {
     name: "huge1royaleye", displayName: "Huge #1 Royal Eye",
     image: "./exclusive/huge1royaleye.png",
-    baseValue: 8000,
+    baseValue: 11000,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 0, "rainbow": 0,
@@ -605,7 +605,7 @@ const petsDataPsu = [
   {
     name: "huge10royaleye", displayName: "Huge #10 Royal Eye",
     image: "./exclusive/huge10royaleye.png",
-    baseValue: 5500,
+    baseValue: 8500,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 0, "rainbow": 0,
@@ -614,7 +614,7 @@ const petsDataPsu = [
   {
     name: "huge25royaleye", displayName: "Huge #25 Royal Eye",
     image: "./exclusive/huge25royaleye.png",
-    baseValue: 2500,
+    baseValue: 4500,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 0, "rainbow": 0,
