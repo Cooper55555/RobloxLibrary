@@ -641,7 +641,7 @@ const petsDataPsu = [
   {
     name: "hugedominusnoob", displayName: "Huge Dominus Noob",
     image: "./exclusive/hugedominusnoob.png",
-    baseValue: 800,
+    baseValue: 2500,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
     traitCombos: {
       "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 800, "rainbow": 1600,
@@ -650,7 +650,7 @@ const petsDataPsu = [
   {
     name: "hugediamondbee", displayName: "Huge Diamond Bee",
     image: "./exclusive/hugediamondbee.png",
-    baseValue: 500,
+    baseValue: 400,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
     traitCombos: {
       "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 500, "rainbow": 1000,
