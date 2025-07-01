@@ -833,7 +833,8 @@ if (quantity > 1000) {
     fontSize: "14px",
     padding: "2px 6px",
     borderRadius: "4px",
-    userSelect: "none"
+    userSelect: "none",
+    aspectRatio: "0"
   });
   container.appendChild(qtyOverlay);
 
@@ -870,6 +871,24 @@ if (quantity > 1000) {
   updateScoresPsu();
 };
 
+function formatNumber(num) {
+  if (num >= 1_000_000) {
+    const val = num / 1_000_000;
+    if (val < 10) return val.toFixed(2) + 'm';
+    if (val < 100) return val.toFixed(1) + 'm';
+    return Math.floor(val) + 'm';
+  } else if (num >= 1000) {
+    const val = num / 1000;
+    if (val < 10) return val.toFixed(2) + 'k';
+    if (val < 100) return val.toFixed(1) + 'k';
+    return Math.floor(val) + 'k';
+  } else {
+    if (num < 10) return num.toFixed(2);
+    if (num < 100) return num.toFixed(1);
+    return Math.floor(num).toString();
+  }
+}
+
 function parseTotalValuePsu(cell) {
   const container = cell.querySelector("div");
   if (!container) return 0;
@@ -883,8 +902,8 @@ function updateScoresPsu() {
   const yourTotal = Array.from(yourGridPsu.children).reduce((sum, c) => sum + parseTotalValuePsu(c), 0);
   const theirTotal = Array.from(theirGridPsu.children).reduce((sum, c) => sum + parseTotalValuePsu(c), 0);
 
-  yourScoreElPsu.textContent = yourTotal.toFixed(2);
-  theirScoreElPsu.textContent = theirTotal.toFixed(2);
+  yourScoreElPsu.textContent = formatNumber(yourTotal);
+  theirScoreElPsu.textContent = formatNumber(theirTotal);
 
   const total = yourTotal + theirTotal;
 
@@ -896,7 +915,6 @@ function updateScoresPsu() {
     theirBarPsu.style.width = `${((theirTotal / total) * 100).toFixed(2)}%`;
   }
 
-  // Remove active only from PETSTARULT outcome labels
   document.querySelectorAll(".psu-outcome .outcome-label").forEach(el => el.classList.remove("active"));
 
   const result = yourTotal > theirTotal ? "win" : yourTotal === theirTotal ? "fair" : "lose";

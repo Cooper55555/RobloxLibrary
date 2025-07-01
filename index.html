@@ -67,15 +67,22 @@
   <h1 class="main-title">Pet Star Ultimate Value Calculator</h1>
 
   <div class="trade-calculator">
-    <div class="trade-header">
-      <div class="offer-value offer-value--yours" id="psu-your-score">0</div>
-      <div class="trade-outcome psu-outcome">
-        <span class="outcome-label outcome-label-psu" id="psu-lose">WIN</span>
-        <span class="outcome-label outcome-label-psu active" id="psu-fair">FAIR</span>
-        <span class="outcome-label outcome-label-psu" id="psu-win">LOSE</span>
-      </div>
-      <div class="offer-value offer-value--theirs" id="psu-their-score">0</div>
+<div class="trade-header">
+  <div class="offer-value offer-value--yours" id="psu-your-score">
+    <span class="offer-value-text">0</span>
+  </div>
+  <div class="info-calculator-box">
+    <div class="YouThem" id="YouThemDissapear">You -> Them</div>
+    <div class="trade-outcome psu-outcome">
+      <span class="outcome-label outcome-label-psu" id="psu-lose">WIN</span>
+      <span class="outcome-label outcome-label-psu active" id="psu-fair">FAIR</span>
+      <span class="outcome-label outcome-label-psu" id="psu-win">LOSE</span>
     </div>
+  </div>
+  <div class="offer-value offer-value--theirs" id="psu-their-score">
+    <span class="offer-value-text">0</span>
+  </div>
+</div>
 
     <div class="trade-bars">
       <div class="value-bar value-bar--yours" id="psu-your-bar"></div>
@@ -83,7 +90,9 @@
     </div>
 
     <div class="trade-grids">
+      <div class="mobile-label">You</div>
       <div class="trade-grid trade-grid--yours" id="psu-your-grid"></div>
+      <div class="mobile-label">Them</div>
       <div class="trade-grid trade-grid--theirs" id="psu-their-grid"></div>
     </div>
   </div>
@@ -97,11 +106,11 @@
 
                 <div class="psu-filter-sidebar">
       <button data-filter="all" class="psu-filter-btn active">All</button>
-      <button data-filter="common" class="psu-filter-btn">Common</button>
-      <button data-filter="uncommon" class="psu-filter-btn">Uncommon</button>
-      <button data-filter="rare" class="psu-filter-btn">Rare</button>
-      <button data-filter="legendary" class="psu-filter-btn">Legendary</button>
       <button data-filter="exotic" class="psu-filter-btn">Exotic</button>
+      <button data-filter="legendary" class="psu-filter-btn">Legendary</button>
+      <button data-filter="rare" class="psu-filter-btn">Rare</button>
+      <button data-filter="uncommon" class="psu-filter-btn">Uncommon</button>
+      <button data-filter="common" class="psu-filter-btn">Common</button>
     </div>
 
       <ul id="psu-trade-pet-list" class="trade-pet-list"></ul>
