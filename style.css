@@ -707,10 +707,11 @@ body.dark-mode .input-unique {
   width: 45%;
   height: 300px;
   overflow-y: auto;
-  border: 1px solid #ccc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   padding: 8px;
   box-sizing: border-box;
   background-color: #f9f9f9;
+  border-radius: 16px;
 }
 
 .trade-grid div {
@@ -971,6 +972,16 @@ body.dark-mode .input-unique {
   /* other styles */
 }
 
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-light);
+  font-weight: 400;
+  margin: 10px 230px;
+  animation: fadeInUp 1s ease-out 0.2s both;
+  justify-content: center;
+  text-align: center;
+}
+
 /* Prevent clicks from propagating if you want to close modal only by X button */
 #trade-pet-modal.show > .trade-modal {
   pointer-events: auto;
@@ -1050,6 +1061,7 @@ body.dark-mode .input-unique {
 
     .hero-subtitle {
     font-size: 1rem;
+    margin: 15px;
   }
   
   .main-title {
@@ -1225,14 +1237,13 @@ h1 {
     margin-top: 20px !important;
     margin-right: 20px !important;
     margin-left: 20px !important;
-    margin-bottom: 20px !important;
   }
 }
 
 .main-title {
   font-size: 4rem;
   font-weight: 800;
-  margin: 40px;
+  margin: 40px 40px 5px 40px;
   background: linear-gradient(135deg, var(--text-primary) 0%, #475569 50%, var(--primary-orange) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1259,6 +1270,7 @@ h1 {
   border-radius: 12px;
   transition: all 0.3s ease;
   font-size: 1rem;
+  margin-top: 15px;
 }
 
 body.dark-mode .msl-search input {
@@ -1313,4 +1325,72 @@ body.dark-mode .msl-search input {
     flex-direction: column;
     gap: 16px;
   }
+}
+
+@media (min-width: 1200px) {
+  .trade-calculator {
+    width: 90vw;          /* bigger width */
+    max-width: 1200px;    /* max width for very large screens */
+    height: 800px;  /* Increase height */
+    max-height: 80vh; /* Optional: max 80% of viewport height */
+  }
+
+  .trade-grid {
+    width: 48%;           /* slightly bigger grid items */     /* taller */
+    gap: 70px 20px;
+    height: 600px;  /* Taller grids */
+    grid-auto-rows: 120px; /* Larger row height */
+  }
+
+  .trade-modal {
+    width: 70vw;          /* much wider modal */
+    max-width: 1200px;
+    padding: 80px 40px 40px 40px;
+    margin-top: 80px;
+    height: 70vh;   /* Taller modal */
+  }
+
+  .trade-header {
+    font-size: 24px;      /* larger font */
+  }
+
+  .trade-outcome {
+    gap: 24px;
+  }
+
+  .outcome-label {
+    font-size: 20px;
+    padding: 12px 28px;
+  }
+
+  .trade-bars {
+    height: 24px;
+    margin-bottom: 20px;
+  }
+
+  #trade-confirm-selection, #psu-trade-confirm-selection {
+    font-size: 22px;
+    padding: 18px;
+  }
+
+  .trade-pet-list li {
+    padding: 12px;
+  }
+
+  .trade-pet-list img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+
+  .trade-traits label {
+    font-size: 20px;
+  }
+
+  .msl-search input {
+    font-size: 1.25rem;
+    max-width: 600px;
+    padding: 1.25rem;
+  }
+
+  /* Adjust any other text or spacing that looks small */
 }
