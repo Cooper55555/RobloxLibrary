@@ -966,8 +966,8 @@ if (isNaN(quantity) || quantity < 1) {
   alert("Please enter a valid quantity (1 or more).");
   return;
 }
-if (quantity > 1000) {
-  alert("Maximum quantity allowed is 1000.");
+if (quantity > 1000000) {
+  alert("Maximum quantity allowed is 1000000.");
   return;
 }
 
