@@ -615,7 +615,7 @@ body.dark-mode .input-unique {
   height: 40px;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Left align text inside */
+  justify-content: center; /* Left align text inside */
   border-radius: 6px;
   font-weight: bold;
   white-space: nowrap;
@@ -1068,6 +1068,10 @@ body.dark-mode .input-unique {
     margin-top: 20px !important;
     font-size: 2rem !important;
   }
+
+    .offer-value {
+  justify-content: center; /* Left align text inside */
+}
 }
 
 /* Responsive */
@@ -1084,6 +1088,10 @@ body.dark-mode .input-unique {
     gap: 8px;
     font-size: 18px;
   }
+
+  .offer-value {
+  justify-content: center; /* Left align text inside */
+}
 
   .trade-outcome {
     justify-content: center;
@@ -1325,9 +1333,103 @@ body.dark-mode .msl-search input {
     flex-direction: column;
     gap: 16px;
   }
+
+    .offer-value {
+  justify-content: center; /* Left align text inside */
+}
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 500px) and (max-width: 1200px) {
+  .trade-calculator {
+    width: 80%;
+    max-width: 420px;
+  }
+
+    .offer-value {
+  justify-content: center; /* Left align text inside */
+}
+
+  /* Header with scores and outcome */
+  .trade-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+  }
+
+  .trade-outcome {
+    justify-content: center;
+    gap: 9px;
+    width: 90%;
+  }
+
+  /* Bars height smaller but visible */
+  .trade-bars {
+    height: 18px;
+    margin-bottom: 15px;
+  }
+
+  /* Grids container - stack vertically but keep grid layout inside */
+  .trade-grids {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .trade-grid {
+    width: 100%;
+    max-width: 100%;
+    gap: 70px 20px;
+  }
+
+  /* Modal styles */
+  .trade-modal {
+    width: 90vw;
+    max-width: 360px;
+    margin-top: 150px; /* bigger margin */
+    padding: 60px 20px 20px 20px;
+  }
+
+  .trade-pet-list {
+    max-height: 240px;
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 10px;
+  }
+
+  .trade-pet-list img {
+    max-width: 60px;
+    max-height: 60px;
+  }
+
+.trade-traits {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 16px 0 0;
+  justify-content: center;
+  border: 1px solid #eee;
+  padding: 14px 12px;
+  border-radius: 10px;
+  background: #fff7e6;
+  box-sizing: border-box;
+}
+
+  #trade-confirm-selection {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .outcome-label {
+    font-size: 14px;
+    color: #333 !important;
+  }
+  .pet-card {
+    width: 47%;
+  }
+}
+
+@media (min-width: 1700px) {
   .trade-calculator {
     width: 90vw;          /* bigger width */
     max-width: 1200px;    /* max width for very large screens */

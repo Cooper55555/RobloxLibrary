@@ -558,6 +558,177 @@ const petsDataPsu = [
     }
   },
   {
+    name: "hugedarkdog", displayName: "Huge Dark Dog",
+    image: "./the13th/hugedarkdog.png",
+    baseValue: 2800,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
+    traitCombos: {
+      "1": 60, "10": 15, "100": 6, "200": 3, "250": 1, "gold": 2800, "rainbow": 5600,
+    }
+  },
+  {
+    name: "hugedominusvespertillio", displayName: "Huge Dominus Vespertillio",
+    image: "./limited/hugedominusvespertillio.png",
+    baseValue: 225,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: true,
+    traitCombos: {
+      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "hugemythicalkitsune", displayName: "Huge Mythical Kitsune",
+    image: "./limited/hugemythicalkitsune.png",
+    baseValue: 150,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: true,
+    traitCombos: {
+      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "hugenovadragon", displayName: "Huge Nova Dragon",
+    image: "./limited/hugenovadragon.png",
+    baseValue: 140,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: true,
+    traitCombos: {
+      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "huge1royaleye", displayName: "Huge #1 Royal Eye",
+    image: "./exclusive/huge1royaleye.png",
+    baseValue: 2500,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "huge10royaleye", displayName: "Huge #10 Royal Eye",
+    image: "./exclusive/huge10royaleye.png",
+    baseValue: 1500,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "huge25royaleye", displayName: "Huge #25 Royal Eye",
+    image: "./exclusive/huge25royaleye.png",
+    baseValue: 750,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "hugepirateaxolotl", displayName: "Huge Pirate Axolotl",
+    image: "./exclusive/hugepirateaxolotl.png",
+    baseValue: 850,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
+    traitCombos: {
+      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 850, "rainbow": 1700,
+    }
+  },
+  {
+    name: "hugecat", displayName: "Huge Cat",
+    image: "./exclusive/hugecat.png",
+    baseValue: 1000,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
+    traitCombos: {
+      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 1000, "rainbow": 2000,
+    }
+  },
+  {
+    name: "hugedominusnoob", displayName: "Huge Dominus Noob",
+    image: "./exclusive/hugedominusnoob.png",
+    baseValue: 800,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
+    traitCombos: {
+      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 800, "rainbow": 1600,
+    }
+  },
+  {
+    name: "hugediamondbee", displayName: "Huge Diamond Bee",
+    image: "./exclusive/hugediamondbee.png",
+    baseValue: 500,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
+    traitCombos: {
+      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 500, "rainbow": 1000,
+    }
+  },
+  {
+    name: "hugeskeleton", displayName: "Huge Skeleton",
+    image: "./exclusive/hugeskeleton.png",
+    baseValue: 550,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
+    traitCombos: {
+      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 550, "rainbow": 1100,
+    }
+  },
+  {
+    name: "hugediamondcelestialdragon", displayName: "Huge Diamond Celestial Dragon",
+    image: "./exclusive/hugediamondcelestialdragon.png",
+    baseValue: 360,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
+    traitCombos: {
+      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 360, "rainbow": 720,
+    }
+  },
+  {
+    name: "hugeroyalcat", displayName: "Huge Royal Cat",
+    image: "./exclusive/hugeroyalcat.png",
+    baseValue: 320,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
+    traitCombos: {
+      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 320, "rainbow": 640,
+    }
+  },
+  {
+    name: "hugenightfallpanda", displayName: "Huge Nightfall Panda",
+    image: "./exclusive/hugenightfallpanda.png",
+    baseValue: 250,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
+    traitCombos: {
+      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 250, "rainbow": 500,
+    }
+  },
+  {
+    name: "hugedragon", displayName: "Huge Dragon",
+    image: "./exclusive/hugedragon.png",
+    baseValue: 200,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
+    traitCombos: {
+      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 200, "rainbow": 400,
+    }
+  },
+  {
+    name: "royaldominus", displayName: "Royal Dominus",
+    image: "./exclusive/royaldominus.png",
+    baseValue: 12,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 12, "rainbow": 24,
+    }
+  },
+  {
+    name: "dominuscat", displayName: "Dominus Cat",
+    image: "./exclusive/dominuscat.png",
+    baseValue: 10,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 10, "rainbow": 20,
+    }
+  },
+  {
+    name: "dominusbunny", displayName: "Dominus Bunny",
+    image: "./exclusive/dominusbunny.png",
+    baseValue: 8,
+    canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 8, "rainbow": 16,
+    }
+  },
+  {
     name: "themythicaldragon", displayName: "The Mythical Dragon",
     image: "./exclusive/themythicaldragon.png",
     baseValue: 3,
@@ -1179,6 +1350,15 @@ const petsDataPsu = [
     }
   },
   {
+    name: "dominusegg", displayName: "Dominus Egg",
+    image: "./exclusive/dominusegg.png",
+    baseValue: 100,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
     name: "ultimatesmoothie", displayName: "Ultimate Smoothie",
     image: "./exotic/ultimatesmoothie.png",
     baseValue: 8,
@@ -1199,7 +1379,7 @@ const petsDataPsu = [
   {
     name: "starfruit", displayName: "Star Fruit",
     image: "./epic/starfruit.png",
-    baseValue: 1,
+    baseValue: 2.3,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
