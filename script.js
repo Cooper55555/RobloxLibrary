@@ -641,7 +641,7 @@ const petsDataPsu = [
   {
     name: "hugedominusnoob", displayName: "Huge Dominus Noob",
     image: "./exclusive/hugedominusnoob.png",
-    baseValue: 2500,
+    baseValue: 2300,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
     traitCombos: {
       "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 800, "rainbow": 1600,
@@ -650,7 +650,7 @@ const petsDataPsu = [
   {
     name: "hugediamondbee", displayName: "Huge Diamond Bee",
     image: "./exclusive/hugediamondbee.png",
-    baseValue: 400,
+    baseValue: 460,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
     traitCombos: {
       "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 500, "rainbow": 1000,
@@ -659,7 +659,7 @@ const petsDataPsu = [
   {
     name: "hugeskeleton", displayName: "Huge Skeleton",
     image: "./exclusive/hugeskeleton.png",
-    baseValue: 550,
+    baseValue: 450,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
     traitCombos: {
       "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 550, "rainbow": 1100,
@@ -677,7 +677,7 @@ const petsDataPsu = [
   {
     name: "hugeroyalcat", displayName: "Huge Royal Cat",
     image: "./exclusive/hugeroyalcat.png",
-    baseValue: 320,
+    baseValue: 380,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
     traitCombos: {
       "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 320, "rainbow": 640,
@@ -740,10 +740,10 @@ const petsDataPsu = [
   {
     name: "eggbee", displayName: "Egg Bee",
     image: "./exotic/eggbee.png",
-    baseValue: 60,
+    baseValue: 45,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
     traitCombos: {
-      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 350, "rainbow": 760,
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 135, "rainbow": 1205,
     }
   },
   {
