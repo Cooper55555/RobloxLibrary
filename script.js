@@ -623,19 +623,19 @@ const petsDataPsu = [
   {
     name: "hugepirateaxolotl", displayName: "Huge Pirate Axolotl",
     image: "./exclusive/hugepirateaxolotl.png",
-    baseValue: 850,
+    baseValue: 725,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
     traitCombos: {
-      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 850, "rainbow": 1700,
+      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 850, "rainbow": 2375,
     }
   },
   {
     name: "hugecat", displayName: "Huge Cat",
     image: "./exclusive/hugecat.png",
-    baseValue: 1000,
+    baseValue: 750,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
     traitCombos: {
-      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 1000, "rainbow": 2000,
+      "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 1000, "rainbow": 2750,
     }
   },
   {
