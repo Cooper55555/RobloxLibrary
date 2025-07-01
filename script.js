@@ -623,7 +623,34 @@ const petsDataPsu = [
   {
     name: "heavenlysmoothie", displayName: "Heavenly Smoothie",
     image: "./legendary/heavenlysmoothie.png",
-    baseValue: 3.5,
+    baseValue: 3.2,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "starfruit", displayName: "Star Fruit",
+    image: "./epic/starfruit.png",
+    baseValue: 1,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "dragonfruit", displayName: "Dragon Fruit",
+    image: "./epic/dragonfruit.png",
+    baseValue: 1.8,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "gravityfruit", displayName: "Gravity Fruit",
+    image: "./epic/gravityfruit.png",
+    baseValue: 0.2,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
@@ -647,7 +674,161 @@ const petsDataPsu = [
       "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
     }
   },
+  {
+    name: "starsmoothie", displayName: "Star Smoothie",
+    image: "./rare/starsmoothie.png",
+    baseValue: 0.3,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "xpsmoothie", displayName: "XP Smoothie",
+    image: "./rare/xpsmoothie.png",
+    baseValue: 0.3,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "honeycomb", displayName: "Honeycomb",
+    image: "./common/honeycomb.png",
+    baseValue: 0.01,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "coconut", displayName: "Coconut",
+    image: "./common/coconut.png",
+    baseValue: 0.06,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "avocado", displayName: "Avocado",
+    image: "./common/avocado.png",
+    baseValue: 0.05,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "volcaniccarrot", displayName: "Volcanic Carrot",
+    image: "./common/volcaniccarrot.png",
+    baseValue: 0.05,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "rainyapple", displayName: "Rainy Apple",
+    image: "./common/rainyapple.png",
+    baseValue: 0.04,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "royalapple", displayName: "Royal Apple",
+    image: "./common/royalapple.png",
+    baseValue: 0.1,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "crownfruit", displayName: "Crown Fruit",
+    image: "./common/crownfruit.png",
+    baseValue: 0.04,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "mysticalberry", displayName: "Mystical Berry",
+    image: "./common/mysticalberry.png",
+    baseValue: 0.07,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "crystalgrape", displayName: "Crystal Grape",
+    image: "./common/crystalgrape.png",
+    baseValue: 0.0075,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "petalplum", displayName: "Petal Plum",
+    image: "./common/petalplum.png",
+    baseValue: 0.04,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "relicberry", displayName: "Relicberry",
+    image: "./common/relicberry.png",
+    baseValue: 0.0025,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "snowpeach", displayName: "Snow Peach",
+    image: "./common/snowpeach.png",
+    baseValue: 0.04,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "dunemelon", displayName: "Dune Melon",
+    image: "./common/dunemelon.png",
+    baseValue: 0.0025,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "acorn", displayName: "Acorn",
+    image: "./common/acorn.png",
+    baseValue: 0.02,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
+  {
+    name: "greenberry", displayName: "Green Berry",
+    image: "./common/greenberry.png",
+    baseValue: 0.005,
+    canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
+    traitCombos: {
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
+    }
+  },
 ];
+
 
 // DOM elements with psu suffix
 const yourGridPsu = document.getElementById("psu-your-grid");
