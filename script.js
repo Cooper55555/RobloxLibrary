@@ -1379,7 +1379,7 @@ const petsDataPsu = [
   {
     name: "starfruit", displayName: "Star Fruit",
     image: "./epic/starfruit.png",
-    baseValue: 2.3,
+    baseValue: 2.5,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
@@ -1397,7 +1397,7 @@ const petsDataPsu = [
   {
     name: "gravityfruit", displayName: "Gravity Fruit",
     image: "./epic/gravityfruit.png",
-    baseValue: 0.2,
+    baseValue: 0.25,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
