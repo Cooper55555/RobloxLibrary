@@ -1780,7 +1780,8 @@ if (quantity > 1000) {
       fontSize: "14px",
       padding: "4px",
       borderRadius: "4px",
-      userSelect: "none"
+      userSelect: "none",
+      aspectRatio: "0"
     });
     container.appendChild(overlay);
   }
