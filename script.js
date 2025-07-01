@@ -596,7 +596,7 @@ const petsDataPsu = [
   {
     name: "huge1royaleye", displayName: "Huge #1 Royal Eye",
     image: "./exclusive/huge1royaleye.png",
-    baseValue: 2500,
+    baseValue: 8000,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 0, "rainbow": 0,
@@ -605,7 +605,7 @@ const petsDataPsu = [
   {
     name: "huge10royaleye", displayName: "Huge #10 Royal Eye",
     image: "./exclusive/huge10royaleye.png",
-    baseValue: 1500,
+    baseValue: 5500,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 0, "rainbow": 0,
@@ -614,7 +614,7 @@ const petsDataPsu = [
   {
     name: "huge25royaleye", displayName: "Huge #25 Royal Eye",
     image: "./exclusive/huge25royaleye.png",
-    baseValue: 750,
+    baseValue: 2500,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 0, "rainbow": 0,
@@ -668,7 +668,7 @@ const petsDataPsu = [
   {
     name: "hugediamondcelestialdragon", displayName: "Huge Diamond Celestial Dragon",
     image: "./exclusive/hugediamondcelestialdragon.png",
-    baseValue: 360,
+    baseValue: 850,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
     traitCombos: {
       "1": 50, "10": 10, "100": 5, "200": 3, "250": 1, "gold": 360, "rainbow": 720,
