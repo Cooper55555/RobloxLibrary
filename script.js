@@ -1406,7 +1406,7 @@ const petsDataPsu = [
   {
     name: "lucksmoothie", displayName: "Luck Smoothie",
     image: "./rare/lucksmoothie.png",
-    baseValue: 0.3,
+    baseValue: 0.05,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
@@ -1415,7 +1415,7 @@ const petsDataPsu = [
   {
     name: "diamondsmoothie", displayName: "Diamond Smoothie",
     image: "./rare/diamondsmoothie.png",
-    baseValue: 0.3,
+    baseValue: 0.05,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
@@ -1424,7 +1424,7 @@ const petsDataPsu = [
   {
     name: "starsmoothie", displayName: "Star Smoothie",
     image: "./rare/starsmoothie.png",
-    baseValue: 0.3,
+    baseValue: 0.05,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
@@ -1433,7 +1433,7 @@ const petsDataPsu = [
   {
     name: "xpsmoothie", displayName: "XP Smoothie",
     image: "./rare/xpsmoothie.png",
-    baseValue: 0.3,
+    baseValue: 0.025,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
