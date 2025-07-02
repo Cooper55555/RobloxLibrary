@@ -592,7 +592,7 @@ const petsDataPsu = [
   {
     name: "hugemythicalkitsune", displayName: "Huge Mythical Kitsune",
     image: "./limited/hugemythicalkitsune.png",
-    baseValue: 150,
+    baseValue: 130,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: true,
     traitCombos: {
       "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 0, "rainbow": 0,
@@ -601,7 +601,7 @@ const petsDataPsu = [
   {
     name: "hugenovadragon", displayName: "Huge Nova Dragon",
     image: "./limited/hugenovadragon.png",
-    baseValue: 140,
+    baseValue: 120,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: true,
     traitCombos: {
       "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 0, "rainbow": 0,
