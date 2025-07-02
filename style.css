@@ -1233,7 +1233,7 @@ body.dark-mode .input-unique {
   gap: 10px;
   justify-content: center;
   margin-bottom: 20px;
-  overflow-x: auto;
+  overflow-y: auto;
   height: 40px;
 }
 
