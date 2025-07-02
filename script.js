@@ -574,10 +574,10 @@ const petsDataPsu = [
   {
     name: "hugedarkdog", displayName: "Huge Dark Dog",
     image: "./the13th/hugedarkdog.png",
-    baseValue: 3600,
+    baseValue: 2650,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
     traitCombos: {
-      "1": 15, "10": 7, "100": 4, "200": 2, "250": 1, "gold": 12200, "rainbow": 34100,
+      "1": 15, "10": 7, "100": 4, "200": 2, "250": 1, "gold": 11150, "rainbow": 33050,
     }
   },
   {
