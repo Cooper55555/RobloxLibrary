@@ -21,6 +21,20 @@ let petsData = [];
 let selectedCell = null;
 let selectedPet = null;
 
+let count = localStorage.getItem('visitorCount');
+if (!count) {
+    count = 0;
+}
+
+// Convert to number and increment
+count = Number(count) + 1;
+
+// Save the new count back to localStorage
+localStorage.setItem('visitorCount', count);
+
+// Show count on the page
+document.getElementById('visitor-count').textContent = count;
+
 const createPet = (name, baseValue, traitCombos) => ({
   name,
   displayName: name,

@@ -1260,6 +1260,31 @@ h1 {
   }
 }
 
+.counter-container {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#visitor-count {
+    color: #4CAF50;
+    align-items: center;
+    margin-left: 5px;
+    font-weight: 600;
+}
+
+.countertext {
+  font-weight: 600;
+  margin: 0px !important;
+}
+
+.dark-mode .countertext {
+  font-weight: 600;
+  margin: 0px !important;
+  color: var(--text-dark);
+}
+
 .main-title {
   font-size: 4rem;
   font-weight: 800;
