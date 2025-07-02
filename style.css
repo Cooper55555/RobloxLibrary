@@ -1227,6 +1227,16 @@ body.dark-mode .input-unique {
   cursor: pointer;
 }
 
+.psu-filter-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  height: 40px;
+}
+
 .offer-value {
 width: 0px;
 justify-content: center;
