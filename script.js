@@ -574,10 +574,10 @@ const petsDataPsu = [
   {
     name: "hugedarkdog", displayName: "Huge Dark Dog",
     image: "./the13th/hugedarkdog.png",
-    baseValue: 3100,
+    baseValue: 3600,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
     traitCombos: {
-      "1": 15, "10": 7, "100": 4, "200": 2, "250": 1, "gold": 8250, "rainbow": 21600,
+      "1": 15, "10": 7, "100": 4, "200": 2, "250": 1, "gold": 12200, "rainbow": 34100,
     }
   },
   {
@@ -610,7 +610,7 @@ const petsDataPsu = [
   {
     name: "huge1royaleye", displayName: "Huge #1 Royal Eye",
     image: "./exclusive/huge1royaleye.png",
-    baseValue: 10500,
+    baseValue: 100000,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 0, "rainbow": 0,
@@ -619,7 +619,7 @@ const petsDataPsu = [
   {
     name: "huge10royaleye", displayName: "Huge #10 Royal Eye",
     image: "./exclusive/huge10royaleye.png",
-    baseValue: 6500,
+    baseValue: 5500,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 0, "rainbow": 0,
@@ -628,7 +628,7 @@ const petsDataPsu = [
   {
     name: "huge25royaleye", displayName: "Huge #25 Royal Eye",
     image: "./exclusive/huge25royaleye.png",
-    baseValue: 2500,
+    baseValue: 2000,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 0, "rainbow": 0,
@@ -637,19 +637,19 @@ const petsDataPsu = [
   {
     name: "hugepirateaxolotl", displayName: "Huge Pirate Axolotl",
     image: "./exclusive/hugepirateaxolotl.png",
-    baseValue: 550,
+    baseValue: 700,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
     traitCombos: {
-      "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 1850, "rainbow": 9350,
+      "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 1600, "rainbow": 6500,
     }
   },
   {
     name: "hugecat", displayName: "Huge Cat",
     image: "./exclusive/hugecat.png",
-    baseValue: 600,
+    baseValue: 700,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
     traitCombos: {
-      "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 1900, "rainbow": 9500,
+      "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 1600, "rainbow": 6500,
     }
   },
   {
@@ -658,34 +658,34 @@ const petsDataPsu = [
     baseValue: 9000,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: true,
     traitCombos: {
-      "1": 15, "10": 7, "100": 4, "200": 2, "250": 1, "gold": 3750, "rainbow": 7750,
+      "1": 15, "10": 7, "100": 4, "200": 2, "250": 1, "gold": 0, "rainbow": 0,
     }
   },
   {
     name: "hugediamondbee", displayName: "Huge Diamond Bee",
     image: "./exclusive/hugediamondbee.png",
-    baseValue: 400,
+    baseValue: 375,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
     traitCombos: {
-      "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 3300, "rainbow": 5600,
+      "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 1325, "rainbow": 5875,
     }
   },
   {
     name: "hugeskeleton", displayName: "Huge Skeleton",
     image: "./exclusive/hugeskeleton.png",
-    baseValue: 450,
+    baseValue: 350,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
     traitCombos: {
-      "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 3800, "rainbow": 7450,
+      "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 1450, "rainbow": 6150,
     }
   },
   {
     name: "hugediamondcelestialdragon", displayName: "Huge Diamond Celestial Dragon",
     image: "./exclusive/hugediamondcelestialdragon.png",
-    baseValue: 350,
+    baseValue: 300,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
     traitCombos: {
-      "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 3050, "rainbow": 7000,
+      "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 2700, "rainbow": 8700,
     }
   },
   {
@@ -694,7 +694,7 @@ const petsDataPsu = [
     baseValue: 275,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: true,
     traitCombos: {
-      "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 2125, "rainbow": 6275,
+      "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 1325, "rainbow": 4825,
     }
   },
   {
