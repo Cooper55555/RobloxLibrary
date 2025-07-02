@@ -1471,7 +1471,7 @@ body.dark-mode .msl-search input {
     width: 90vw;          /* bigger width */
     max-width: 1200px;    /* max width for very large screens */
     height: 800px;  /* Increase height */
-    max-height: 80vh; /* Optional: max 80% of viewport height */
+    max-height: 85vh; /* Optional: max 80% of viewport height */
   }
 
   .trade-grid {
