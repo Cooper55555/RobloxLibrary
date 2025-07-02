@@ -704,34 +704,34 @@ const petsDataPsu = [
   {
     name: "royaldominus", displayName: "Royal Dominus",
     image: "./exclusive/royaldominus.png",
-    baseValue: 12,
+    baseValue: 5,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
     traitCombos: {
-      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 12, "rainbow": 24,
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 85, "rainbow": 220,
     }
   },
   {
     name: "dominuscat", displayName: "Dominus Cat",
     image: "./exclusive/dominuscat.png",
-    baseValue: 10,
+    baseValue: 3,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
     traitCombos: {
-      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 10, "rainbow": 20,
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 17, "rainbow": 172,
     }
   },
   {
     name: "dominusbunny", displayName: "Dominus Bunny",
     image: "./exclusive/dominusbunny.png",
-    baseValue: 8,
+    baseValue: 1,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
     traitCombos: {
-      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 8, "rainbow": 16,
+      "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 4, "rainbow": 69,
     }
   },
   {
     name: "themythicaldragon", displayName: "The Mythical Dragon",
     image: "./exclusive/themythicaldragon.png",
-    baseValue: 3,
+    baseValue: 0.5,
     canHaveGold: true, canHaveRainbow: true, canHaveSerial: false,
     traitCombos: {
       "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 3, "rainbow": 6,
