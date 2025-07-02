@@ -464,6 +464,8 @@ body.dark-mode .settings-icon {
 h5 {
   text-align: center;
   margin: 15px;
+  color: var(--text-light);
+  font-weight: 400;
 }
 
 .search-bar {
