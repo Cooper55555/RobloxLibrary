@@ -1727,8 +1727,8 @@ if (isNaN(quantity) || quantity < 1) {
   alert("Please enter a valid quantity (1 or more).");
   return;
 }
-if (quantity > 1000) {
-  alert("Maximum quantity allowed is 1000.");
+if (quantity > 1000000) {
+  alert("Maximum quantity allowed is 1000000.");
   return;
 }
 
@@ -1766,17 +1766,29 @@ if (quantity > 1000) {
   const qtyOverlay = document.createElement("div");
   qtyOverlay.textContent = `x${quantity}`;
   Object.assign(qtyOverlay.style, {
-    position: "absolute",
-    top: "4px",
-    left: "4px",
-    background: "rgba(0,0,0,0.6)",
-    color: "white",
-    fontWeight: "bold",
-    fontSize: "14px",
-    padding: "2px 6px",
-    borderRadius: "4px",
-    userSelect: "none",
-    aspectRatio: "0"
+  position: "absolute",
+  top: "4px",
+  left: "4px",
+  background: "rgba(0,0,0,0.6)",
+  color: "white",
+  fontWeight: "bold",
+  fontSize: "12px",                 // ✅ Smaller font, good for phones too
+  padding: "2px 4px",
+  borderRadius: "4px",
+  userSelect: "none",
+  minWidth: "70px",                 // Minimum for short text
+  maxWidth: "80px",                 // Cap for long text
+  width: "fit-content",
+  height: "20px",                   // Compact height
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  textAlign: "center",
+  lineHeight: "1",
+  whiteSpace: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  boxSizing: "border-box", 
   });
   container.appendChild(qtyOverlay);
 
@@ -1785,17 +1797,29 @@ if (quantity > 1000) {
     const overlay = document.createElement("div");
     overlay.textContent = `≤${traitKey}`;
     Object.assign(overlay.style, {
-      position: "absolute",
-      bottom: "8px",
-      right: "4px",
-      background: "rgba(0,0,0,0.6)",
-      color: "white",
-      fontWeight: "bold",
-      fontSize: "14px",
-      padding: "4px",
-      borderRadius: "4px",
-      userSelect: "none",
-      aspectRatio: "0"
+    position: "absolute",
+    bottom: "8px",
+    right: "4px",
+    background: "rgba(0,0,0,0.6)",
+    color: "white",
+    fontWeight: "bold",
+    fontSize: "12px",
+    padding: "2px 4px",
+    borderRadius: "4px",
+    userSelect: "none",
+    minWidth: "70px",
+    maxWidth: "80px",
+    width: "fit-content",
+    height: "20px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
+    lineHeight: "1",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    boxSizing: "border-box",
     });
     container.appendChild(overlay);
   }
