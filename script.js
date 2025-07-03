@@ -583,7 +583,7 @@ const petsDataPsu = [
   {
     name: "hugedominusvespertillio", displayName: "Huge Dominus Vespertillio",
     image: "./limited/hugedominusvespertillio.png",
-    baseValue: 225,
+    baseValue: 230,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: true,
     traitCombos: {
       "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 0, "rainbow": 0,
@@ -592,7 +592,7 @@ const petsDataPsu = [
   {
     name: "hugemythicalkitsune", displayName: "Huge Mythical Kitsune",
     image: "./limited/hugemythicalkitsune.png",
-    baseValue: 130,
+    baseValue: 115,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: true,
     traitCombos: {
       "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 0, "rainbow": 0,
@@ -601,7 +601,7 @@ const petsDataPsu = [
   {
     name: "hugenovadragon", displayName: "Huge Nova Dragon",
     image: "./limited/hugenovadragon.png",
-    baseValue: 120,
+    baseValue: 110,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: true,
     traitCombos: {
       "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 0, "rainbow": 0,
@@ -700,7 +700,7 @@ const petsDataPsu = [
   {
     name: "hugenightfallpanda", displayName: "Huge Nightfall Panda",
     image: "./exclusive/hugenightfallpanda.png",
-    baseValue: 180,
+    baseValue: 210,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: true,
     traitCombos: {
       "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 0, "rainbow": 0,
@@ -709,7 +709,7 @@ const petsDataPsu = [
   {
     name: "hugedragon", displayName: "Huge Dragon",
     image: "./exclusive/hugedragon.png",
-    baseValue: 150,
+    baseValue: 125,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: true,
     traitCombos: {
       "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 0, "rainbow": 0,
