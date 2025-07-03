@@ -1384,7 +1384,7 @@ const petsDataPsu = [
   {
     name: "heavenlysmoothie", displayName: "Heavenly Smoothie",
     image: "./legendary/heavenlysmoothie.png",
-    baseValue: 3.2,
+    baseValue: 2.6,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
