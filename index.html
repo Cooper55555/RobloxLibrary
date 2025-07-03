@@ -100,7 +100,26 @@
       <div class="mobile-label">Them</div>
       <div class="trade-grid trade-grid--theirs" id="psu-their-grid"></div>
     </div>
+    <div class="showpets-box">
+    <h1 id="open-pet-list-btn">
+  Show Pets Overview
+    </h1>
+    </div>
   </div>
+
+<div id="pet-list-modal" class="psu-modal">
+  <div class="psu-modal-content">
+    <span id="close-pet-list-btn" class="psu-close">&times;</span>
+    <h2>Pets Overview</h2>
+    <input
+      type="text"
+      id="psu-pet-search"
+      placeholder="Search..."
+      style="width: 100%; padding: 8px; margin: 10px 0 20px 0; font-size: 16px; box-sizing: border-box;"
+    />
+    <div id="psu-pet-list-view-unique"></div>
+  </div>
+</div>
 
   <div class="modal-overlay trade-modal-overlay" id="psu-trade-pet-modal">
     <div class="modal trade-modal">

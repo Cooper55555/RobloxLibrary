@@ -716,6 +716,31 @@ body.dark-mode .input-unique {
   border-radius: 16px;
 }
 
+.showpets-box {
+  display: flex;
+  justify-content: center;  /* center horizontally */
+  align-items: center;      /* center vertically */           /* full viewport height */
+  margin-top: 15px;             /* margin around container */
+}
+
+#open-pet-list-btn {
+  margin: 20px auto;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: var(--primary-orange);
+  color: white;
+  border-radius: 8px;
+  user-select: none;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  width: 100%;
+}
+
+#open-pet-list-btn:hover {
+  background-color: var(--primary-orange-dark);
+}
+
 .trade-grid div {
   background: #ffeadd;
   border: 3px solid #ff6f6f;
@@ -1466,11 +1491,134 @@ body.dark-mode .msl-search input {
   }
 }
 
+#pet-list-modal.psu-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0; width: 100%; height: 100%;
+  overflow: auto;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-soft-light);
+}
+
+#pet-list-modal .psu-modal-content {
+  background: var(--background-light);
+  margin: 5% auto;
+  padding: 20px 30px;
+  border-radius: 12px;
+  max-width: 600px;
+  box-shadow: var(--shadow-hover-light);
+  color: var(--text-primary);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Close Button */
+#close-pet-list-btn.psu-close {
+  color: var(--primary-orange);
+  float: right;
+  font-size: 30px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#close-pet-list-btn.psu-close:hover {
+  color: var(--primary-orange-dark);
+}
+
+/* Modal Heading */
+#pet-list-modal h2 {
+  margin-top: 0;
+  color: var(--darkorange);
+  font-weight: 700;
+  font-size: 1.8rem;
+  user-select: none;
+}
+
+/* Search Input */
+#psu-pet-search {
+  border: 2px solid var(--primary-orange);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  color: var(--text-light);
+  background: var(--glass-light);
+  transition: border-color 0.3s ease;
+  outline-offset: 2px;
+  outline-color: transparent;
+  box-sizing: border-box;
+}
+
+#psu-pet-search:focus {
+  border-color: var(--primary-orange-dark);
+  outline-color: var(--primary-orange-dark);
+  background: white;
+}
+
+/* Pet Card */
+.psu-pet-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: var(--glass-light);
+  box-shadow: var(--shadow-soft-light);
+  transition: box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.psu-pet-card:hover {
+  box-shadow: var(--shadow-hover-light);
+}
+
+/* Pet Image */
+.psu-pet-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: contain;
+  margin-right: 16px;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+}
+
+/* Pet Info */
+.psu-pet-info {
+  flex: 1;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+
+/* Pet Traits List */
+.psu-pet-traits {
+  margin: 8px 0 0 0;
+  padding-left: 16px;
+  list-style-type: disc;
+  color: var(--text-secondary-light);
+  font-size: 0.85rem;
+}
+
+/* Trait items bold trait names */
+.psu-pet-traits li strong {
+  color: var(--primary-orange);
+}
+
+/* No pets found message */
+#psu-pet-list-view-unique p {
+  font-style: italic;
+  text-align: center;
+  color: var(--text-secondary);
+  margin: 40px 0;
+  user-select: none;
+}
+
 @media (min-width: 1700px) {
   .trade-calculator {
     width: 90vw;          /* bigger width */
     max-width: 1200px;    /* max width for very large screens */
-    height: 800px;  /* Increase height */
+    height: 870px;  /* Increase height */
     max-height: 85vh; /* Optional: max 80% of viewport height */
   }
 

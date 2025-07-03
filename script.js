@@ -1590,6 +1590,84 @@ const petsDataPsu = [
   },
 ];
 
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("psu-pet-list-view-unique");
+  const modal = document.getElementById("pet-list-modal");
+  const openBtn = document.getElementById("open-pet-list-btn");
+  const closeBtn = document.getElementById("close-pet-list-btn");
+  const searchInput = document.getElementById("psu-pet-search");
+
+  // Function to render pets filtered by search term
+  function renderPetsInModal(filter = "") {
+    container.innerHTML = "";
+    const filteredPets = petsDataPsu.filter(pet =>
+      pet.displayName.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    if (filteredPets.length === 0) {
+      container.innerHTML = `<p style="color:#888; text-align:center;">No pets found.</p>`;
+      return;
+    }
+
+    filteredPets.forEach(pet => {
+      const card = document.createElement("div");
+      card.className = "psu-pet-card";
+
+      const img = document.createElement("img");
+      img.src = pet.image;
+      img.alt = pet.displayName;
+      img.onerror = () => img.src = "https://via.placeholder.com/80?text=No+Img";
+
+      const info = document.createElement("div");
+      info.className = "psu-pet-info";
+      info.innerHTML = `
+        <strong>${pet.displayName}</strong><br/>
+        Base Value: ${pet.baseValue}<br/>
+        Can Have Gold: ${pet.canHaveGold ? "Yes" : "No"}, Rainbow: ${pet.canHaveRainbow ? "Yes" : "No"}, Serial: ${pet.canHaveSerial ? "Yes" : "No"}
+      `;
+
+      const traitsList = document.createElement("ul");
+      traitsList.className = "psu-pet-traits";
+Object.entries(pet.traitCombos).forEach(([trait, val]) => {
+  const li = document.createElement("li");
+  const displayTrait = !isNaN(Number(trait)) ? `≤${trait}` : trait;
+  li.innerHTML = `<strong>${displayTrait}</strong>: ${val}`;
+  traitsList.appendChild(li);
+});
+
+      info.appendChild(traitsList);
+      card.appendChild(img);
+      card.appendChild(info);
+      container.appendChild(card);
+    });
+  }
+
+  // Open modal handler
+  openBtn.addEventListener("click", () => {
+    renderPetsInModal();
+    modal.style.display = "block";
+    searchInput.value = "";
+    searchInput.focus();
+  });
+
+  // Close modal handler
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  // Close modal when clicking outside content
+  window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+  // Filter as user types
+  searchInput.addEventListener("input", () => {
+    renderPetsInModal(searchInput.value);
+  });
+});
+
 
 // DOM elements with psu suffix
 const yourGridPsu = document.getElementById("psu-your-grid");
