@@ -1628,9 +1628,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const traitsList = document.createElement("ul");
       traitsList.className = "psu-pet-traits";
-Object.entries(pet.traitCombos).forEach(([trait, val]) => {
+Object.entries(pet.traitCombos).forEach(([trait, comboValue]) => {
   const li = document.createElement("li");
   const displayTrait = !isNaN(Number(trait)) ? `≤${trait}` : trait;
+  const val = pet.baseValue + (comboValue || 0);
   li.innerHTML = `<strong>${displayTrait}</strong>: ${val}`;
   traitsList.appendChild(li);
 });
