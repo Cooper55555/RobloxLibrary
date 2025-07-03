@@ -592,7 +592,7 @@ const petsDataPsu = [
   {
     name: "hugemythicalkitsune", displayName: "Huge Mythical Kitsune",
     image: "./limited/hugemythicalkitsune.png",
-    baseValue: 115,
+    baseValue: 125,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: true,
     traitCombos: {
       "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 0, "rainbow": 0,
@@ -601,7 +601,7 @@ const petsDataPsu = [
   {
     name: "hugenovadragon", displayName: "Huge Nova Dragon",
     image: "./limited/hugenovadragon.png",
-    baseValue: 110,
+    baseValue: 120,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: true,
     traitCombos: {
       "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 0, "rainbow": 0,
@@ -709,7 +709,7 @@ const petsDataPsu = [
   {
     name: "hugedragon", displayName: "Huge Dragon",
     image: "./exclusive/hugedragon.png",
-    baseValue: 125,
+    baseValue: 145,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: true,
     traitCombos: {
       "1": 10, "10": 5, "100": 3, "200": 2, "250": 1, "gold": 0, "rainbow": 0,
@@ -1393,7 +1393,7 @@ const petsDataPsu = [
   {
     name: "starfruit", displayName: "Star Fruit",
     image: "./epic/starfruit.png",
-    baseValue: 1.5,
+    baseValue: 1.4,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
@@ -1402,7 +1402,7 @@ const petsDataPsu = [
   {
     name: "dragonfruit", displayName: "Dragon Fruit",
     image: "./epic/dragonfruit.png",
-    baseValue: 1.5,
+    baseValue: 1.35,
     canHaveGold: false, canHaveRainbow: false, canHaveSerial: false,
     traitCombos: {
       "1": 0, "10": 0, "100": 0, "200": 0, "250": 0, "gold": 0, "rainbow": 0,
